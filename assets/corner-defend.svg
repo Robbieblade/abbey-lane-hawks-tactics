@@ -30,8 +30,12 @@
 <circle cx="296.0" cy="164" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="296.0" y="169" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">LM</text>
 <line x1="296.0" y1="150" x2="274.0" y2="156" stroke="#FFC400" stroke-width="2" marker-end="url(#ah)" opacity=".95"/>
 <text x="230.0" y="190" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">man-mark their big threats — goalside &amp; touch-tight</text>
-<circle cx="230.0" cy="490" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="230.0" y="495" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">RM</text>
-<text x="230.0" y="516" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">edge of the box — clears &amp; starts counter</text>
+<circle cx="100.0" cy="250" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="100.0" y="255" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<text x="100.0" y="278" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">spare man</text>
+<text x="100.0" y="294" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">attacks it</text>
+<circle cx="360.0" cy="250" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="360.0" y="255" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">RM</text>
+<text x="360.0" y="278" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">edge of our box</text>
+<text x="360.0" y="294" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">launches counter</text>
 <circle cx="160.0" cy="580" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="160.0" y="585" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CF</text>
 <text x="160.0" y="606" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">stay high — outlet</text>
 </svg>
