@@ -1,0 +1,39 @@
+<svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Throw-in options">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#FFC400"/></marker></defs>
+<rect x="0" y="0" width="460" height="640" fill="#1C4B2A"/>
+<rect x="0" y="0" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="112" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="224" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="336" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="448" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="560" width="460" height="56" fill="#1F5430"/>
+<rect x="16" y="16" width="428" height="608" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="190.0" y="10" width="80" height="10" fill="#ffffff" fill-opacity=".5"/>
+<rect x="134.0" y="16" width="192" height="60" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="184.0" y="16" width="92" height="24" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<path d="M 176.0 76 A 60 60 0 0 0 284.0 76" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="190.0" y="620" width="80" height="10" fill="#FFC400" fill-opacity=".55"/>
+<rect x="134.0" y="564" width="192" height="60" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="184.0" y="600" width="92" height="24" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<path d="M 176.0 564 A 60 60 0 0 1 284.0 564" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<line x1="16" y1="320.0" x2="444" y2="320.0" stroke="#ffffff" stroke-opacity=".3" stroke-width="2" stroke-dasharray="7 7"/>
+<circle cx="230.0" cy="320.0" r="48" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<text x="28" y="310.0" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="start" letter-spacing=".8">HALFWAY</text>
+<text x="230.0" y="612" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">OUR GOAL</text>
+<circle cx="434" cy="310.0" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="434" y="315.0" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">RM</text>
+<text x="428" y="286.0" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="end" letter-spacing=".8">thrower</text>
+<circle cx="390" cy="180.0" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="390" y="185.0" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CF</text>
+<line x1="424" y1="298.0" x2="398" y2="194.0" stroke="#FFC400" stroke-width="3" marker-end="url(#ah)" opacity=".95"/>
+<text x="364" y="170.0" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="end" letter-spacing=".8">1 &#183; down the line</text>
+<circle cx="270.0" cy="390.0" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="270.0" y="395.0" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<line x1="422" y1="318.0" x2="286.0" y2="384.0" stroke="#FFC400" stroke-width="3" marker-end="url(#ah)" opacity=".95"/>
+<text x="270.0" y="418.0" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">2 &#183; set back</text>
+<circle cx="220.0" cy="280.0" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="220.0" y="285.0" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<line x1="256.0" y1="380.0" x2="232.0" y2="290.0" stroke="#FFC400" stroke-width="3" marker-end="url(#ah)" stroke-dasharray="6 5" opacity=".95"/>
+<text x="200.0" y="272.0" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="end" letter-spacing=".8">3 &#183; third man</text>
+<circle cx="46" cy="300.0" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="46" y="305.0" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">LM</text>
+<path d="M 208.0 280.0 C 110.0 230.0, 86 230.0, 52 286.0" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#ah)" opacity=".92"/>
+<text x="46" y="328.0" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">4 &#183; switch away</text>
+<circle cx="320.0" cy="550" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="320.0" y="555" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CB</text>
+<text x="320.0" y="576" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">safety behind</text>
+</svg>

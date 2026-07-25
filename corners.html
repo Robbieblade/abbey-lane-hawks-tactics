@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawks — Corners</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C; --panel:#16171A; --panel2:#101114; --line:#2C2E33;
+  --gold:#FFC400; --gold-dim:#8A6A00; --paper:#F2F2F0; --mute:#9A9CA3; --grass:#1C4B2A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold)}
+
+/* HERO */
+header.hero{border-bottom:3px solid var(--gold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--gold)}
+.sub{color:var(--mute);max-width:58ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+/* NAV — page tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:var(--mute);
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:var(--paper);outline:none}
+.tabs a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTIONS */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.4rem,3.4vw,2.05rem);margin:0 0 6px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 24px;max-width:64ch}
+h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  font-size:1.18rem;margin:26px 0 10px}
+
+/* diagram + copy split */
+.split{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:28px;align-items:start}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.diagram img{display:block;width:100%;height:auto;background:var(--grass)}
+.diagram .cap{padding:11px 15px;border-top:1px solid var(--line);font-size:.86rem;color:var(--mute)}
+
+.obj{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:8px}
+.obj div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);
+  padding:14px 16px;border-radius:4px}
+.obj strong{display:block;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--gold);margin-bottom:2px}
+.obj span{font-size:.92rem;color:#D6D7DA}
+
+ol.steps{margin:0;padding-left:22px}
+ol.steps li{margin-bottom:8px}
+ol.steps li::marker{color:var(--gold);font-weight:700}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin-bottom:7px}
+ul.plain li::marker{color:var(--gold)}
+
+.prio{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.prio div{display:flex;align-items:center;gap:12px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.prio .num{font-family:'Archivo Black',sans-serif;color:var(--gold);width:22px;text-align:center;flex:0 0 auto}
+
+.key{border-left:4px solid var(--gold);background:var(--panel2);padding:12px 16px;
+  border-radius:0 6px 6px 0;margin-top:14px;font-size:.95rem}
+
+.scen{display:grid;gap:14px;margin-top:6px}
+.scen details{background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.scen summary{cursor:pointer;list-style:none;padding:14px 18px;font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;letter-spacing:.07em;font-size:1.08rem;display:flex;align-items:center;gap:11px}
+.scen summary::-webkit-details-marker{display:none}
+.scen summary::before{content:"+";color:var(--gold);font-family:'Archivo Black',sans-serif;font-size:1.1rem}
+.scen details[open] summary::before{content:"\2212"}
+.scen summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.scen .body{padding:0 18px 18px;border-top:1px solid var(--line);padding-top:14px}
+.scen .body p:first-child{margin-top:0}
+
+/* home: role cards + shape */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.role{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.role-hd{display:flex;align-items:center;gap:11px;padding:13px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.badge{width:40px;height:40px;flex:0 0 auto;border-radius:5px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.82rem}
+.badge.dark{background:#2C2E33;color:var(--gold)}
+.role-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.12rem;display:block;line-height:1.1}
+.role-hd small{color:var(--mute);font-size:.82rem}
+.role ul{margin:0;padding:14px 18px 16px 34px}
+.role li{margin-bottom:7px;font-size:.94rem}
+.role li::marker{color:var(--gold)}
+.role .oneline{margin:0;padding:11px 16px;background:var(--panel2);border-top:1px solid var(--line);
+  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--gold);font-size:.95rem}
+
+/* position matrix (deep reference) */
+.pos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pos{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pos-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.pos-badge{width:44px;height:44px;flex:0 0 auto;border-radius:6px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.9rem}
+.pos-badge.dark{background:#2C2E33;color:var(--gold)}
+.pos-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.18rem;display:block;line-height:1.1}
+.pos-hd small{color:var(--mute);font-size:.82rem}
+.pos dl{margin:0;padding:6px 0}
+.pos dt{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;
+  font-size:.82rem;color:var(--gold);padding:10px 16px 2px}
+.pos dd{margin:0;padding:0 16px 8px;font-size:.93rem;color:#DcDdE0}
+.pos dd + dt{border-top:1px solid var(--line);margin-top:4px}
+
+.trig{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.trig div{background:var(--gold);color:#000;padding:13px 15px;border-radius:4px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;font-size:1rem;display:flex;align-items:center;gap:9px}
+.trig div::before{content:"\25B6";font-size:.7rem}
+.goshout{margin-top:18px;text-align:center;font-family:'Archivo Black',sans-serif;
+  font-size:clamp(1.3rem,4.5vw,2rem);text-transform:uppercase;color:var(--gold);
+  border:3px solid var(--gold);border-radius:6px;padding:16px;letter-spacing:.04em}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rule{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:4px;padding:20px 18px}
+.rule .n{font-family:'Archivo Black',sans-serif;font-size:2.6rem;color:var(--gold-dim);line-height:1;margin-bottom:6px}
+.rule b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.25rem;display:block;margin-bottom:6px}
+.rule p{margin:0;font-size:.94rem;color:#D6D7DA}
+
+/* home hub cards */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.hub a{display:block;text-decoration:none;color:var(--paper);background:var(--panel);
+  border:1px solid var(--line);border-radius:8px;padding:22px 20px;transition:border-color .15s,transform .15s}
+.hub a:hover,.hub a:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.hub .k{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--gold);font-size:1.3rem;margin-bottom:6px}
+.hub .d{color:var(--mute);font-size:.92rem}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+
+@media print{
+  body{background:#fff;color:#000}
+  nav.tabs{display:none}
+  .scen details:not([open]) .body{display:block}
+  section{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></div>
+    <div class="hero-txt">
+      <p class="eyebrow">Corners</p>
+      <h1>Corners<span class="l2">Attack &amp; defend</span></h1>
+      <p class="sub">Routine 1 when we attack, zonal-plus-man when we defend.</p>
+    </div>
+    <div class="club"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html" aria-current="page">Corners</a><a href="throw-ins.html">Throw-Ins</a></div></nav>
+
+<section id="attack">
+  <div class="wrap">
+    <p class="tag">In possession</p>
+    <h2>Attacking corners — Routine 1</h2>
+    <p class="sec-note">We're big and we're quick. Routine 1 uses both: a grouped aerial threat that's hard to pick up, and two fast players held back so a cleared ball doesn't catch us out.</p>
+    <div class="split">
+      <div class="diagram"><img src="assets/corner-attack.svg" alt="Outswinger from the winger. Two CBs + a CM group tight at the far edge, then attack the swing. Two fast players stay back."><div class="cap">Outswinger from the winger. Two CBs + a CM group tight at the far edge, then attack the swing. Two fast players stay back.</div></div>
+      <div>
+        <h3>The routine</h3>
+        <ol class="steps">
+          <li><strong>Outswinger</strong> from whichever winger is on that side — the ball curls away from the keeper, toward our runners.</li>
+          <li><strong>Both centre backs and one CM start grouped</strong> at the far edge of the box. Stand close so their markers can't tell who's attacking what.</li>
+          <li>On the taker's signal, the group <strong>breaks and attacks the ball</strong> together — timed to meet the swing, not standing and waiting.</li>
+          <li>The two free players read it: one on the <strong>edge of the D</strong> for the cut-back or second ball, one gambling on a <strong>near-post flick</strong>.</li>
+        </ol>
+        <h3>Stay back — don't get countered</h3>
+        <ul class="plain">
+          <li><strong>CF stays back</strong> — our quickest outlet if we win it and break.</li>
+          <li><strong>One winger or CM stays back</strong> alongside him, to kill their counter or start ours.</li>
+        </ul>
+        <div class="key"><strong>Why grouping works:</strong> three big bodies in a tight cluster force their defenders to sort out markers late. Someone always peels off free.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="defend">
+  <div class="wrap">
+    <p class="tag">Out of possession</p>
+    <h2>Defending corners — zonal posts, man-mark threats</h2>
+    <p class="sec-note">A mix. Two players hold the posts as zones so nothing sneaks in front or back. Everyone else picks up their biggest threats man-to-man — goalside and touch-tight. One player sits on the edge to clear and start the counter.</p>
+    <div class="split">
+      <div class="diagram"><img src="assets/corner-defend.svg" alt="CMs zone the near and back posts. CBs and a winger man-mark their aerial threats. One on the edge; CF stays high as the outlet."><div class="cap">CMs zone the near and back posts. CBs and a winger man-mark their aerial threats. One on the edge; CF stays high as the outlet.</div></div>
+      <div>
+        <h3>Jobs</h3>
+        <ul class="plain">
+          <li><strong>Two CMs — zonal, one each post.</strong> Don't get dragged out. Attack anything in your zone and clear it long.</li>
+          <li><strong>CBs + a winger — man-mark their danger men.</strong> Goalside, touch-tight, arm across. Go with your man wherever he goes.</li>
+          <li><strong>Keeper — commands the six-yard box.</strong> If he calls it, everyone clears the path.</li>
+          <li><strong>One player on the edge of the box</strong> to head out anything short and start the counter.</li>
+          <li><strong>CF stays high</strong> as our out-ball — the moment we clear, he's the target.</li>
+        </ul>
+        <div class="key"><strong>First rule:</strong> attack the ball, don't watch it. Whoever's nearest wins the first contact and clears it high, wide and long.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><img src="assets/abbey-lane-badge.jpg" alt=""><span>Abbey Lane Saturday Team &middot; Hawks</span><img src="assets/hawks-badge.png" alt=""></div>
+    <div>9-a-side &middot; 2-5-1 &middot; Restarts &amp; set pieces</div>
+  </div>
+</footer>
+</body>
+</html>

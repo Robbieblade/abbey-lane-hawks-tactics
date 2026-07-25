@@ -1,0 +1,33 @@
+<svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Attacking corner routine 1">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#FFC400"/></marker></defs>
+<rect x="0" y="0" width="460" height="640" fill="#1C4B2A"/>
+<rect x="0" y="0" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="112" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="224" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="336" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="448" width="460" height="56" fill="#1F5430"/>
+<rect x="0" y="560" width="460" height="56" fill="#1F5430"/>
+<rect x="16" y="16" width="428" height="608" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="184.0" y="12" width="92" height="10" fill="#ffffff" fill-opacity=".6"/>
+<rect x="80.0" y="22" width="300" height="150" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<rect x="160.0" y="22" width="140" height="58" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<circle cx="230.0" cy="132" r="3" fill="#ffffff" fill-opacity=".6"/>
+<path d="M 172.0 172 A 62 62 0 0 0 288.0 172" stroke="#ffffff" stroke-opacity=".42" fill="none" stroke-width="2"/>
+<circle cx="436" cy="616" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="436" y="621" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">RM</text>
+<text x="430" y="590" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="600" text-anchor="end" letter-spacing=".8">outswinger</text>
+<circle cx="116.0" cy="150" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="116.0" y="155" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CB</text>
+<circle cx="148.0" cy="142" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="148.0" y="147" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CB</text>
+<circle cx="132.0" cy="172" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="132.0" y="177" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<text x="130.0" y="202" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="middle" letter-spacing=".8">group tight — unclear who to mark</text>
+<path d="M 120.0 136 C 190.0 90, 210.0 70, 230.0 56" fill="none" stroke="#FFC400" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ah)" opacity=".92"/>
+<path d="M 148.0 134 C 220.0 96, 250.0 74, 264.0 58" fill="none" stroke="#FFC400" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ah)" opacity=".92"/>
+<path d="M 428 608 C 340 260, 290.0 150, 240.0 120" fill="none" stroke="#ffffff" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#ah)" opacity=".92"/>
+<text x="420" y="300" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="600" text-anchor="end" letter-spacing=".8">ball curls out</text>
+<circle cx="190.0" cy="570" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="190.0" y="575" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CF</text>
+<circle cx="300.0" cy="550" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="300.0" y="555" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<text x="244.0" y="600" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="600" text-anchor="middle" letter-spacing=".8">two fast players stay back</text>
+<circle cx="294.0" cy="210" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="294.0" y="215" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">LM</text>
+<text x="294.0" y="236" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">picks space (edge of D)</text>
+<circle cx="172.0" cy="96" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="172.0" y="101" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
+<text x="172.0" y="72" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">near-post flick</text>
+</svg>

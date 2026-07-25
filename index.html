@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawks — Set-Piece Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C; --panel:#16171A; --panel2:#101114; --line:#2C2E33;
+  --gold:#FFC400; --gold-dim:#8A6A00; --paper:#F2F2F0; --mute:#9A9CA3; --grass:#1C4B2A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold)}
+
+/* HERO */
+header.hero{border-bottom:3px solid var(--gold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--gold)}
+.sub{color:var(--mute);max-width:58ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+/* NAV — page tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:var(--mute);
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:var(--paper);outline:none}
+.tabs a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTIONS */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.4rem,3.4vw,2.05rem);margin:0 0 6px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 24px;max-width:64ch}
+h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  font-size:1.18rem;margin:26px 0 10px}
+
+/* diagram + copy split */
+.split{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:28px;align-items:start}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.diagram img{display:block;width:100%;height:auto;background:var(--grass)}
+.diagram .cap{padding:11px 15px;border-top:1px solid var(--line);font-size:.86rem;color:var(--mute)}
+
+.obj{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:8px}
+.obj div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);
+  padding:14px 16px;border-radius:4px}
+.obj strong{display:block;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--gold);margin-bottom:2px}
+.obj span{font-size:.92rem;color:#D6D7DA}
+
+ol.steps{margin:0;padding-left:22px}
+ol.steps li{margin-bottom:8px}
+ol.steps li::marker{color:var(--gold);font-weight:700}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin-bottom:7px}
+ul.plain li::marker{color:var(--gold)}
+
+.prio{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.prio div{display:flex;align-items:center;gap:12px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.prio .num{font-family:'Archivo Black',sans-serif;color:var(--gold);width:22px;text-align:center;flex:0 0 auto}
+
+.key{border-left:4px solid var(--gold);background:var(--panel2);padding:12px 16px;
+  border-radius:0 6px 6px 0;margin-top:14px;font-size:.95rem}
+
+.scen{display:grid;gap:14px;margin-top:6px}
+.scen details{background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.scen summary{cursor:pointer;list-style:none;padding:14px 18px;font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;letter-spacing:.07em;font-size:1.08rem;display:flex;align-items:center;gap:11px}
+.scen summary::-webkit-details-marker{display:none}
+.scen summary::before{content:"+";color:var(--gold);font-family:'Archivo Black',sans-serif;font-size:1.1rem}
+.scen details[open] summary::before{content:"\2212"}
+.scen summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.scen .body{padding:0 18px 18px;border-top:1px solid var(--line);padding-top:14px}
+.scen .body p:first-child{margin-top:0}
+
+/* home: role cards + shape */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.role{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.role-hd{display:flex;align-items:center;gap:11px;padding:13px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.badge{width:40px;height:40px;flex:0 0 auto;border-radius:5px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.82rem}
+.badge.dark{background:#2C2E33;color:var(--gold)}
+.role-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.12rem;display:block;line-height:1.1}
+.role-hd small{color:var(--mute);font-size:.82rem}
+.role ul{margin:0;padding:14px 18px 16px 34px}
+.role li{margin-bottom:7px;font-size:.94rem}
+.role li::marker{color:var(--gold)}
+.role .oneline{margin:0;padding:11px 16px;background:var(--panel2);border-top:1px solid var(--line);
+  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--gold);font-size:.95rem}
+
+/* position matrix (deep reference) */
+.pos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pos{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pos-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.pos-badge{width:44px;height:44px;flex:0 0 auto;border-radius:6px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.9rem}
+.pos-badge.dark{background:#2C2E33;color:var(--gold)}
+.pos-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.18rem;display:block;line-height:1.1}
+.pos-hd small{color:var(--mute);font-size:.82rem}
+.pos dl{margin:0;padding:6px 0}
+.pos dt{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;
+  font-size:.82rem;color:var(--gold);padding:10px 16px 2px}
+.pos dd{margin:0;padding:0 16px 8px;font-size:.93rem;color:#DcDdE0}
+.pos dd + dt{border-top:1px solid var(--line);margin-top:4px}
+
+.trig{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.trig div{background:var(--gold);color:#000;padding:13px 15px;border-radius:4px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;font-size:1rem;display:flex;align-items:center;gap:9px}
+.trig div::before{content:"\25B6";font-size:.7rem}
+.goshout{margin-top:18px;text-align:center;font-family:'Archivo Black',sans-serif;
+  font-size:clamp(1.3rem,4.5vw,2rem);text-transform:uppercase;color:var(--gold);
+  border:3px solid var(--gold);border-radius:6px;padding:16px;letter-spacing:.04em}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rule{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:4px;padding:20px 18px}
+.rule .n{font-family:'Archivo Black',sans-serif;font-size:2.6rem;color:var(--gold-dim);line-height:1;margin-bottom:6px}
+.rule b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.25rem;display:block;margin-bottom:6px}
+.rule p{margin:0;font-size:.94rem;color:#D6D7DA}
+
+/* home hub cards */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.hub a{display:block;text-decoration:none;color:var(--paper);background:var(--panel);
+  border:1px solid var(--line);border-radius:8px;padding:22px 20px;transition:border-color .15s,transform .15s}
+.hub a:hover,.hub a:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.hub .k{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--gold);font-size:1.3rem;margin-bottom:6px}
+.hub .d{color:var(--mute);font-size:.92rem}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+
+@media print{
+  body{background:#fff;color:#000}
+  nav.tabs{display:none}
+  .scen details:not([open]) .body{display:block}
+  section{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></div>
+    <div class="hero-txt">
+      <p class="eyebrow">9-a-side &middot; 2-5-1 &middot; Restarts &amp; set pieces</p>
+      <h1>Hawks Playbook<span class="l2">Own the dead ball</span></h1>
+      <p class="sub">Everything you need for match day. Pick your position, learn the jobs, win the moment.</p>
+    </div>
+    <div class="club"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html" aria-current="page">Roles</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a></div></nav>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Start here</p>
+    <h2>Everything you need for match day</h2>
+    <p class="sec-note">Pick a topic. Each page has the shape, the jobs and what to look for. This page is your position and how we set up.</p>
+    <div class="hub">
+      <a href="goal-kicks.html"><div class="k">Goal Kicks</div><div class="d">Building from our own, and pressing theirs.</div></a>
+      <a href="corners.html"><div class="k">Corners</div><div class="d">Attacking Routine 1 and how we defend.</div></a>
+      <a href="throw-ins.html"><div class="k">Throw-Ins</div><div class="d">Four options, every time.</div></a>
+    </div>
+  </div>
+</section>
+
+<section id="shape">
+  <div class="wrap">
+    <p class="tag">Our formation</p>
+    <h2>How we line up — 2-5-1</h2>
+    <p class="sec-note">Two centre backs, five across midfield, one striker. On our own restarts one central midfielder drops deeper to link play; out of possession that same shape lets us press in pairs and stay protected.</p>
+    <div class="split">
+      <div class="diagram"><img src="assets/our-goalkick.svg" alt="Our 2-5-1 with a central midfielder dropping in to build from the back."><div class="cap">Our 2-5-1 with a central midfielder dropping in to build from the back.</div></div>
+      <div>
+        <div class="obj">
+          <div><strong>Big in the air</strong><span>Two strong centre backs — our threat at attacking corners.</span></div>
+          <div><strong>Quick on top</strong><span>Pace up front and wide to break at speed.</span></div>
+          <div><strong>Spare in the middle</strong><span>A dropping CM gives us an extra man to keep the ball.</span></div>
+        </div>
+        <div class="key"><strong>Team rules that never change:</strong> hunt in pairs, always have a spare player, and play through them rather than around when we can.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="positions">
+  <div class="wrap">
+    <p class="tag">Quick reference</p>
+    <h2>Your job on every restart</h2>
+    <p class="sec-note">Find your position. Everything across all four situations in one card. The detail for each is on its own page.</p>
+    <div class="pos-grid">
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge">GK</span><span><b>Goalkeeper</b><small>Our spare player</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Scan before you receive. Stay calm, don't rush. Be the spare man for the return and switch play if one side's crowded.</dd>
+          <dt>Attacking corners</dt><dd>Stay alert and high enough to sweep a long clearance. Talk — you can see the whole counter coming.</dd>
+          <dt>Defending corners</dt><dd>Command your six-yard box. Call early and loud; when you go, everyone clears your path.</dd>
+          <dt>Throw-ins</dt><dd>Offer a safe backwards option near our goal if the throw is under pressure.</dd>
+        </dl>
+      </div>
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge dark">CB</span><span><b>Centre Backs</b><small>LCB &amp; RCB</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Split wide, just outside the six-yard box. Receive side-on, first touch forward, drive in if unopposed. Recycle through the keeper if blocked.</dd>
+          <dt>Attacking corners</dt><dd>Both go up. Group tight at the far edge with a CM, then attack the outswinger. You're our main aerial threat.</dd>
+          <dt>Defending corners</dt><dd>Man-mark their biggest threats. Goalside, touch-tight, go everywhere with your man. Attack the ball, don't watch it.</dd>
+          <dt>Throw-ins</dt><dd>Nearest CB stays behind the ball as safety. Never both caught upfield.</dd>
+        </dl>
+      </div>
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge dark">CM</span><span><b>Deep CM</b><small>The link player</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Drop between the lines ahead of the CBs. Never stand still — offer angles, receive on the half-turn, play forward fast. You make the 4v2.</dd>
+          <dt>Attacking corners</dt><dd>If you're not in the group, you <em>stay back</em> to screen the counter. If you're the grouped CM, attack with the CBs.</dd>
+          <dt>Defending corners</dt><dd>Zone a post. Don't get pulled out. Clear anything in your zone long.</dd>
+          <dt>Throw-ins</dt><dd>Check in for the set-back, lay it off first time, then support the third-man run.</dd>
+        </dl>
+      </div>
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge">CM</span><span><b>Advanced CMs</b><small>The two higher CMs</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Play in the pockets between their midfield and defence. Different lines, check your shoulders, receive facing forward.</dd>
+          <dt>Attacking corners</dt><dd>One joins the group to attack; the free one takes the edge of the D for cut-backs and second balls.</dd>
+          <dt>Defending corners</dt><dd>Zone the other post, or man-mark a threat if we're outnumbered in the air.</dd>
+          <dt>Throw-ins</dt><dd>Be the third-man runner arriving beyond the set-back. Time it late.</dd>
+        </dl>
+      </div>
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge">LM</span><span><b>Wingers</b><small>LM &amp; RM</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Stay wide, hold the touchline, stay high. Don't come short too early. Attack the space once the first press is beaten.</dd>
+          <dt>Attacking corners</dt><dd>The winger on that side takes the <strong>outswinger</strong>. The other reads the drop — near-post flick or picks space.</dd>
+          <dt>Defending corners</dt><dd>One man-marks a threat; if you're the quick one, you stay back as the outlet with the CF.</dd>
+          <dt>Throw-ins</dt><dd>Option 1 down the line, or the switch target on the far side. Hold width to stretch them.</dd>
+        </dl>
+      </div>
+
+      <div class="pos">
+        <div class="pos-hd"><span class="pos-badge">CF</span><span><b>Centre Forward</b><small>Stay high</small></span></div>
+        <dl>
+          <dt>Our goal kicks</dt><dd>Stay high the whole build-up. Pin their centre backs, threaten both channels, be the long out-ball if the press is fierce. Don't drop into midfield.</dd>
+          <dt>Attacking corners</dt><dd>You <strong>stay back</strong> — our quickest outlet on the counter. Don't gamble in the box.</dd>
+          <dt>Defending corners</dt><dd>Stay high as our out-ball. The moment we clear, you're the target to relieve pressure.</dd>
+          <dt>Throw-ins</dt><dd>Pull wide for the down-the-line option, or spin in behind once we've kept it.</dd>
+        </dl>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <p class="tag">If you remember nothing else</p>
+    <h2>Three team rules</h2>
+    <div class="rules">
+      <div class="rule"><div class="n">1</div><b>Hunt in pairs</b><p>Nobody presses alone. The nearest teammate always goes with the first presser.</p></div>
+      <div class="rule"><div class="n">2</div><b>Always a spare player</b><p>The keeper and the deep CM give us an extra option. Never let them mark us man-for-man with no out.</p></div>
+      <div class="rule"><div class="n">3</div><b>Play through, not around</b><p>If we can go through the middle safely, do it. Only go long when they've shut all the space.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><img src="assets/abbey-lane-badge.jpg" alt=""><span>Abbey Lane Saturday Team &middot; Hawks</span><img src="assets/hawks-badge.png" alt=""></div>
+    <div>9-a-side &middot; 2-5-1 &middot; Restarts &amp; set pieces</div>
+  </div>
+</footer>
+</body>
+</html>
