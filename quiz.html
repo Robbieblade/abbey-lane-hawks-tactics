@@ -129,7 +129,7 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
     <div class="hero-txt">
       <p class="eyebrow">Test yourself</p>
       <h1>Team Quiz<span class="l2">Know Your Role</span></h1>
-      <p class="sub">Pick your position and answer eight quick questions on your role and how we play. See how you do, then go again.</p>
+      <p class="sub">Pick your position and answer ten quick questions on your role, restarts and how we play. See how you do, then go again.</p>
     </div>
     <div class="club"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></a></div>
   </div>
@@ -142,11 +142,11 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
     <div id="screen-roles">
       <p class="tag">Pick your position</p>
       <h2>Choose Your Position</h2>
-      <p class="sec-note">Five questions on your role, three on how we play as a team. Shuffled every time you play.</p>
+      <p class="sec-note">Four questions on your open-play role, three on your set-piece jobs, three on how we play as a team. Shuffled every time you play.</p>
       <div class="role-pick-grid">
         <button type="button" class="role-pick-btn" data-role="gk"><span class="pos-badge">GK</span><span><b>Goalkeeper</b></span></button>
-        <button type="button" class="role-pick-btn" data-role="cb"><span class="pos-badge dark">CB</span><span><b>Centre Backs</b></span></button>
-        <button type="button" class="role-pick-btn" data-role="deepcm"><span class="pos-badge dark">CM</span><span><b>Deep CM</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="cb"><span class="pos-badge">CB</span><span><b>Centre Backs</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="deepcm"><span class="pos-badge">CM</span><span><b>Deep CM</b></span></button>
         <button type="button" class="role-pick-btn" data-role="advcm"><span class="pos-badge">CM</span><span><b>Advanced CMs</b></span></button>
         <button type="button" class="role-pick-btn" data-role="wm"><span class="pos-badge">LM</span><span><b>Wide Midfielders</b></span></button>
         <button type="button" class="role-pick-btn" data-role="cf"><span class="pos-badge">CF</span><span><b>Centre Forward</b></span></button>
@@ -157,7 +157,7 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
       <p class="tag" id="quiz-role-tag">Question</p>
       <h2 id="quiz-role-heading">Team Quiz</h2>
       <div class="quiz-card">
-        <div class="quiz-progress" id="quiz-progress">Question 1 of 8</div>
+        <div class="quiz-progress" id="quiz-progress">Question 1 of 10</div>
         <h3 class="quiz-q" id="quiz-question"></h3>
         <div class="quiz-options" id="quiz-options"></div>
         <div class="quiz-feedback hidden" id="quiz-feedback"></div>
@@ -170,7 +170,7 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
     <div id="screen-score" class="hidden">
       <p class="tag">Result</p>
       <h2>How Did You Do?</h2>
-      <div class="quiz-score" id="quiz-score-num">0/8</div>
+      <div class="quiz-score" id="quiz-score-num">0/10</div>
       <p class="quiz-score-sub" id="quiz-score-msg"></p>
       <div id="quiz-review" class="quiz-review"></div>
       <div class="quiz-btn-row" style="justify-content:center">
@@ -216,6 +216,13 @@ const ROLES = {
     {q:"What's the danger of always kicking it long?",correct:"We give the ball away and invite pressure back",wrong:["Nothing, it's safest","We always score","It wastes time only"],fb:"Play out when it's on — keep possession."},
     {q:"A cross comes into your box that you can reach. You should…",correct:"Call early and go and claim it",wrong:["Stay on my line and hope","Leave it to a defender silently","Wait and see"],fb:"Call it early and take charge of your box."},
     {q:"When we're attacking and camped in their half, you should be…",correct:"Higher up, ready to sweep and keep us pushed on",wrong:["Stuck on my line","Sat in the six-yard box","Behind the goal"],fb:"Push up as the sweeper when we're on top."}
+  ],setPiece:[
+    {q:"At our goal kick, before you play it you should…",correct:"Scan for the free man and stay calm",wrong:["Boot it long straight away","Rush the first pass","Kick it out"],fb:"You start it — scan and pick the right pass."},
+    {q:"Their goal kick goes long. Your job is to…",correct:"Sweep anything in behind if we're caught upfield",wrong:["Stay glued to my line","Run to the halfway line","Do nothing"],fb:"Be the sweeper when we press high."},
+    {q:"Defending a corner, your job is to…",correct:"Command the six-yard box and call early",wrong:["Stay on my line silently","Mark a player outside the box","Stand by the post and wait"],fb:"Own your box — call it loud and early."},
+    {q:"At our throw-in under pressure, you offer…",correct:"A safe backwards option near our goal",wrong:["A long throw target","Nothing","A run in behind"],fb:"Be the safe out-ball if they're stuck."},
+    {q:"When we build from a goal kick and they press two, we have…",correct:"A spare man, because I'm involved too",wrong:["No way out, go long","To boot it","To give up possession"],fb:"You make it a 4v2 — stay in the game."},
+    {q:"When you claim a corner cleanly, you should…",correct:"Start the counter fast while they're forward",wrong:["Hold it and waste time","Roll it to a marked player","Kick it out"],fb:"Claim it and launch us — they're out of shape."}
   ]},
   cb:{label:"Centre Backs",questions:[
     {q:"At a goal kick, where do you start?",correct:"Split wide, just outside the six-yard box",wrong:["In the centre","Up with the striker","On the wing"],fb:"Split wide to give us width to build from."},
@@ -228,6 +235,13 @@ const ROLES = {
     {q:"We win it and break forward. What do you do?",correct:"Push the line up to support and stay compact",wrong:["Stay deep on my own","Sprint up as a striker","Stop and watch"],fb:"Step up together when we win it."},
     {q:"A striker is running in behind. Do you dive in for the tackle?",correct:"No — stay on my feet and jockey",wrong:["Slide in straight away","Pull his shirt","Turn and chase blindly"],fb:"Stay on your feet — don't dive in."},
     {q:"At an attacking corner, your job is to…",correct:"Get up and attack it — I'm a main aerial threat",wrong:["Stay back on the halfway line","Mark our own player","Stay in goal"],fb:"Big at both ends — attack their box."}
+  ],setPiece:[
+    {q:"At our goal kick, where do you start?",correct:"Split wide, just outside the six-yard box",wrong:["In the middle","On the halfway line","Up front"],fb:"Split wide to build from the back."},
+    {q:"Attacking a corner (Routine 1), you…",correct:"Group tight at the far edge with a CM, then attack the ball",wrong:["Stay on the halfway line","Mark our own player","Hang by the corner flag"],fb:"Group up so they can't mark you, then attack it."},
+    {q:"Defending a corner, your job is to…",correct:"Man-mark their biggest threat, goalside and touch-tight",wrong:["Zone a post","Stand on the edge","Mark no one"],fb:"Take their danger man — stay tight and goalside."},
+    {q:"Defending their goal kick when it goes long, you should…",correct:"Hold your position behind the CM attacking it, as cover",wrong:["Both jump for it","Dive in","Chase up the pitch"],fb:"Stay behind as insurance if the first ball's lost."},
+    {q:"At an attacking corner, why do you both go up?",correct:"We're the main aerial threat",wrong:["To defend","To take the corner","To rest"],fb:"Big at both ends — get in their box."},
+    {q:"Defending a corner, your first thought when the ball comes in is…",correct:"Attack the ball, don't watch it",wrong:["Wait and see","Stay flat-footed","Ball-watch"],fb:"Go and win it — don't admire it."}
   ]},
   deepcm:{label:"Deep CM",questions:[
     {q:"Where do you position to help us build?",correct:"Central, dropping in front of the centre backs to pick it up",wrong:["Out wide","Up with the striker","In their box"],fb:"Stay central and link the CBs to the rest of us."},
@@ -240,6 +254,13 @@ const ROLES = {
     {q:"Their attack is building through the middle. You should…",correct:"Block the pass into their strikers",wrong:["Push up to press their keeper","Mark a winger","Stay forward"],fb:"Screen the middle — protect the back two."},
     {q:"Why do you rarely make forward runs into their box?",correct:"I hold the middle so we stay balanced",wrong:["I'm not allowed","I'm too slow","It doesn't matter"],fb:"You're the anchor — stay balanced behind the play."},
     {q:"Your first touch in a tight space should be…",correct:"Away from pressure, into space",wrong:["Straight to a teammate always","A big touch forward","Back to the keeper"],fb:"Protect it — first touch into space."}
+  ],setPiece:[
+    {q:"At our goal kick, your job is to…",correct:"Drop in and pick the ball up to make the extra man",wrong:["Stay high","Hug the touchline","Mark their striker"],fb:"You're the link that beats their press."},
+    {q:"They press us man-to-man at our goal kick. The plan is…",correct:"Keeper into the striker, and we play off the knock-down",wrong:["Force a short pass into a marked man","Boot it anywhere","Give up"],fb:"Man-marked? Go long to the CF and support."},
+    {q:"Defending a corner, your job is to…",correct:"Zone a post and clear anything in your zone long",wrong:["Man-mark their biggest player","Stay up front","Dive into the crowd"],fb:"Hold your post — don't get dragged out."},
+    {q:"At an attacking corner, if you're not in the group you…",correct:"Stay back to screen the counter",wrong:["Crash the box too","Stand on the wing","Mark the keeper"],fb:"Someone guards against the break — that's you."},
+    {q:"Defending their goal kick that goes long, you should be…",correct:"First to attack the ball, moving forwards onto it",wrong:["Stay deep","Mark a winger","Drop to the goalline"],fb:"You start deeper so you attack it going forward."},
+    {q:"At our throw-in, a good option from you is…",correct:"Check in for the set-back and lay it off first time",wrong:["Stand still and watch","Sprint away","Stay behind the ball"],fb:"Show for the set-back, then link it on."}
   ]},
   advcm:{label:"Advanced CMs",questions:[
     {q:"Best place to receive to hurt them?",correct:"In the pockets between their midfield and defence",wrong:["Next to the deep CM","On the wing","In my own half"],fb:"Find the space between their lines."},
@@ -252,6 +273,13 @@ const ROLES = {
     {q:"Should both of you be in the box for a chance?",correct:"One arrives late, one holds for the loose ball",wrong:["Both crash the box","Both stay out","Neither goes in"],fb:"One in, one covering — read it."},
     {q:"You're arriving late at the edge of the box as a cross comes in. You should…",correct:"Attack the space for a shot or second ball",wrong:["Stop on the edge","Turn back","Stand and watch"],fb:"Late runs win goals — attack it."},
     {q:"What best keeps you effective all game?",correct:"Timing runs and picking my moments",wrong:["Sprinting everywhere non-stop","Staying still to save energy","Only attacking"],fb:"Read when to go and when to hold."}
+  ],setPiece:[
+    {q:"Defending their goal kick, when the CF presses you should…",correct:"Be the nearest one to join and press with him",wrong:["Stay back","Mark the keeper","Stand still"],fb:"Hunt in pairs — go with the striker."},
+    {q:"At our throw-in, the \"third man\" run means…",correct:"Arriving beyond the set-back to collect the flick",wrong:["Throwing it in","Standing next to the thrower","Staying deep"],fb:"Time a late run beyond the set-back."},
+    {q:"Defending their goal kick played short, you…",correct:"Block the pass into their midfield",wrong:["Press the keeper alone","Mark a full-back","Drop to our box"],fb:"Cut off the middle — force it backwards."},
+    {q:"At an attacking corner (Routine 1), the free CM often takes…",correct:"The edge of the D for cut-backs and second balls",wrong:["A spot in goal","The corner flag","Our own half"],fb:"Read the second ball on the edge of the box."},
+    {q:"When we win the ball back from their goal-kick press, you should…",correct:"Get us going forward quickly",wrong:["Slow it down","Pass back to the keeper","Stop"],fb:"Win it high, attack fast."},
+    {q:"At our throw-in, before you receive you should…",correct:"Check your shoulder and show at a different depth to others",wrong:["All stand in a line","Crowd the thrower","Turn away"],fb:"Different depths, check your shoulder."}
   ]},
   wm:{label:"Wide Midfielders",questions:[
     {q:"When we're building up, where should you be?",correct:"High and wide, holding the touchline",wrong:["Inside next to the CM","Dropping deep","In the centre circle"],fb:"Hold your width — make the pitch big."},
@@ -264,6 +292,13 @@ const ROLES = {
     {q:"When shouldn't you come short for the ball?",correct:"Too early — I should stay high till it's ready",wrong:["Never, always come short","Whenever I like","Only at corners"],fb:"Stay patient — attack the space when it's on."},
     {q:"Their full-back is high up the pitch on your side. You should…",correct:"Track back and deny the space in behind us",wrong:["Stay up top","Go central","Stand and point"],fb:"Track back and protect your side."},
     {q:"On a fast break, your job is to…",correct:"Get up the pitch quickly and stretch the play",wrong:["Slow it down","Stay deep","Come inside"],fb:"Pace on the break — get us up the pitch."}
+  ],setPiece:[
+    {q:"When the corner's on your side, you take…",correct:"The outswinger",wrong:["A short throw","A shot","A rest"],fb:"Whip the outswinger from your side."},
+    {q:"Defending their goal kick, your body shape should…",correct:"Force play down the line, not inside",wrong:["Invite it inside","Face away","Stand square"],fb:"Show them down the line — never inside."},
+    {q:"At our throw-in, option 1 is usually…",correct:"Down the line for me or the CF to run onto",wrong:["A backwards throw","Into the keeper","A long throw to the box"],fb:"Down the line — get in behind."},
+    {q:"Defending a corner, if you're the quick one you…",correct:"Stay back as the outlet with the CF",wrong:["Mark a big player","Stand on a post","Go in goal"],fb:"Quick players stay ready for the break."},
+    {q:"Defending their goal kick, before you press wide you start…",correct:"Narrow, to block the central pass first",wrong:["Right on the touchline","In their box","Behind my CB"],fb:"Narrow first, then explode wide."},
+    {q:"If the near side's crowded at a throw-in, the plan is…",correct:"Switch it to the far winger in space",wrong:["Force it down the line","Throw to a marked man","Boot it out"],fb:"Crowded? Switch away to space."}
   ]},
   cf:{label:"Centre Forward",questions:[
     {q:"How do you make yourself hard to mark?",correct:"Position between their centre backs or drift across them",wrong:["Stand still in the middle","Drop deep every time","Stay on the wing"],fb:"Get between them so they can't pick you up."},
@@ -276,6 +311,13 @@ const ROLES = {
     {q:"What starts our defending from the front?",correct:"My press, forcing them one way",wrong:["Waiting on the halfway line","Dropping into midfield","Doing nothing"],fb:"Defending starts with you up top."},
     {q:"A defender has the ball and you press alone with no support. Best choice?",correct:"Force him one way and wait for a teammate",wrong:["Dive in and get beaten","Stop pressing","Foul him"],fb:"Press with a plan — don't get beaten alone."},
     {q:"Why make runs into the channels rather than staying central?",correct:"It pulls their defenders apart and creates gaps",wrong:["It's easier","To avoid the ball","No reason"],fb:"Stretch them wide to open the middle."}
+  ],setPiece:[
+    {q:"Defending their goal kick, you should…",correct:"Curve your run to force them one side, and never press alone",wrong:["Charge the keeper straight on","Stand still","Mark a defender"],fb:"Curve it, force one side, a CM comes with you."},
+    {q:"At an attacking corner, your job is to…",correct:"Stay back — I'm the quickest outlet on the counter",wrong:["Crash the far post","Take the corner","Mark their keeper"],fb:"Don't gamble in the box — be our counter threat."},
+    {q:"Defending a corner, you should…",correct:"Stay high as our out-ball",wrong:["Drop into our box to defend","Mark a post","Stand on the goalline"],fb:"Stay up — you're how we clear our lines and break."},
+    {q:"Their keeper has the ball in his hands. You should…",correct:"Wait — don't press until he releases it",wrong:["Charge him","Stand in the goal","Turn away"],fb:"Don't press early — he'll just throw round you."},
+    {q:"At our throw-in, a good movement is…",correct:"Pull wide for the down-the-line option, or spin in behind",wrong:["Stand still centrally","Drop to defend","Go to the corner flag"],fb:"Pull wide or spin in — give the thrower a target."},
+    {q:"Defending their goal kick, the whole team is trying to…",correct:"Win it high, close enough to score",wrong:["Drop off and defend deep","Let them play out","Foul them"],fb:"Win it high and hurt them."}
   ]}
 };
 
@@ -292,9 +334,10 @@ const state = { role:null, questions:[], index:0, score:0, wrong:[] };
 
 function buildQuestionSet(roleKey){
   const role = ROLES[roleKey];
-  const fiveFromRole = shuffle(role.questions).slice(0,5);
+  const fourFromRole = shuffle(role.questions).slice(0,4);
+  const threeSetPiece = shuffle(role.setPiece).slice(0,3);
   const threeShared = shuffle(SHARED).slice(0,3);
-  const combined = shuffle(fiveFromRole.concat(threeShared));
+  const combined = shuffle(fourFromRole.concat(threeSetPiece, threeShared));
   return combined.map(function(q){
     const opts = shuffle([q.correct].concat(q.wrong));
     return { text:q.q, options:opts, correctIndex:opts.indexOf(q.correct), feedback:q.fb };
