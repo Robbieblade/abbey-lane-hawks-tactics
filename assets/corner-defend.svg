@@ -17,9 +17,9 @@
 <text x="430" y="50" fill="#ffffff" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="end" letter-spacing=".8">their taker</text>
 <circle cx="260.0" cy="40" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="260.0" y="45" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">GK</text>
 <circle cx="172.0" cy="44" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="172.0" y="49" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
-<text x="172.0" y="74" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">near post (zonal)</text>
+<text x="172.0" y="74" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="middle" letter-spacing=".8">back post (zonal)</text>
 <circle cx="300.0" cy="60" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="300.0" y="65" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CM</text>
-<text x="326.0" y="86" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="end" letter-spacing=".8">back post (zonal)</text>
+<text x="326.0" y="86" fill="#FFC400" font-family="Barlow Condensed,sans-serif" font-size="11" font-weight="600" text-anchor="end" letter-spacing=".8">near post (zonal)</text>
 <circle cx="118.0" cy="150" r="16" fill="#E8E8E8" stroke="#8A8A8A" stroke-width="2.5"/><text x="118.0" y="155" fill="#333333" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle"></text>
 <circle cx="156.0" cy="156" r="16" fill="#FFC400" stroke="#0B0B0C" stroke-width="2.5"/><text x="156.0" y="161" fill="#000000" font-family="Archivo Black,sans-serif" font-size="11" text-anchor="middle">CB</text>
 <line x1="156.0" y1="142" x2="134.0" y2="148" stroke="#FFC400" stroke-width="2" marker-end="url(#ah)" opacity=".95"/>
