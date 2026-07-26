@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawks — Team Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C; --panel:#16171A; --panel2:#101114; --line:#2C2E33;
+  --gold:#FFC400; --gold-dim:#8A6A00; --paper:#F2F2F0; --mute:#9A9CA3; --grass:#1C4B2A;
+  --bad:#C0392B;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold)}
+
+/* HERO */
+header.hero{border-bottom:3px solid var(--gold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--gold)}
+.sub{color:var(--mute);max-width:58ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+/* NAV — page tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:var(--mute);
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:var(--paper);outline:none}
+.tabs a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTIONS */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.4rem,3.4vw,2.05rem);margin:0 0 6px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 24px;max-width:64ch}
+
+.pos-badge{width:44px;height:44px;flex:0 0 auto;border-radius:6px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.9rem}
+.pos-badge.dark{background:#2C2E33;color:var(--gold)}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+
+/* QUIZ — role picker */
+.role-pick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.role-pick-btn{display:flex;align-items:center;gap:14px;background:var(--panel);border:1px solid var(--line);
+  border-radius:8px;padding:18px 20px;cursor:pointer;font:inherit;color:var(--paper);text-align:left;
+  transition:border-color .15s,transform .15s;width:100%;min-height:64px}
+.role-pick-btn:hover,.role-pick-btn:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.role-pick-btn b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.12rem;display:block}
+
+/* QUIZ — question card */
+.quiz-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:26px 22px;max-width:680px;margin:0 auto}
+.quiz-progress{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gold);font-size:.85rem;margin-bottom:12px}
+.quiz-q{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:1.2rem;line-height:1.25;margin:0 0 22px}
+.quiz-options{display:flex;flex-direction:column;gap:12px}
+.quiz-option{display:block;width:100%;text-align:left;background:var(--panel2);border:1px solid var(--line);
+  border-radius:6px;padding:16px 18px;font:inherit;font-size:1.02rem;color:var(--paper);cursor:pointer;
+  min-height:52px;transition:border-color .15s,background .15s}
+.quiz-option:hover:not(:disabled),.quiz-option:focus-visible:not(:disabled){border-color:var(--gold);outline:none}
+.quiz-option:disabled{cursor:default}
+.quiz-option.correct{border-color:var(--gold);background:rgba(255,196,0,.14);color:var(--gold);font-weight:600}
+.quiz-option.incorrect{border-color:var(--bad);background:rgba(192,57,43,.16)}
+.quiz-feedback{margin-top:20px;padding:14px 16px;border-radius:0 6px 6px 0;border-left:4px solid var(--gold);
+  background:var(--panel2);font-size:.95rem}
+.quiz-feedback.wrong{border-left-color:var(--bad)}
+.quiz-feedback.hidden{display:none}
+.quiz-btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.quiz-btn-primary{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;background:var(--gold);color:#000;border:none;border-radius:6px;
+  padding:14px 24px;font-size:1rem;cursor:pointer;min-height:48px}
+.quiz-btn-primary:hover,.quiz-btn-primary:focus-visible{opacity:.88;outline:none}
+.quiz-btn-primary.hidden{display:none}
+.quiz-btn-secondary{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.07em;background:transparent;color:var(--gold);border:2px solid var(--gold);border-radius:6px;
+  padding:12px 22px;font-size:1rem;cursor:pointer;min-height:48px}
+.quiz-btn-secondary:hover,.quiz-btn-secondary:focus-visible{background:rgba(255,196,0,.1);outline:none}
+
+/* QUIZ — score screen */
+.quiz-score{font-family:'Archivo Black',sans-serif;font-size:clamp(2.2rem,7vw,3.4rem);color:var(--gold);
+  text-align:center;margin:0 0 8px}
+.quiz-score-sub{text-align:center;color:var(--mute);margin:0 0 28px}
+.quiz-review{display:grid;gap:14px;margin-top:6px;max-width:680px;margin-left:auto;margin-right:auto}
+.quiz-review-item{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--bad);
+  border-radius:0 6px 6px 0;padding:14px 16px}
+.quiz-review-item .rq{font-weight:600;margin-bottom:6px}
+.quiz-review-item .ra{color:var(--gold);font-size:.92rem;margin-bottom:4px}
+.quiz-review-item .rf{color:#D6D7DA;font-size:.9rem}
+
+.hidden{display:none}
+
+@media print{
+  body{background:#fff;color:#000}
+  nav.tabs{display:none}
+  section{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><a href="index.html"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></a></div>
+    <div class="hero-txt">
+      <p class="eyebrow">Test yourself</p>
+      <h1>Team Quiz<span class="l2">Know Your Role</span></h1>
+      <p class="sub">Pick your position and answer eight quick questions on your role and how we play. See how you do, then go again.</p>
+    </div>
+    <div class="club"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></a></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="set-piece-roles.html">Set Pieces</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a><a href="quiz.html" aria-current="page">Quiz</a></div></nav>
+
+<section id="quiz-app">
+  <div class="wrap">
+
+    <div id="screen-roles">
+      <p class="tag">Pick your position</p>
+      <h2>Choose Your Position</h2>
+      <p class="sec-note">Five questions on your role, three on how we play as a team. Shuffled every time you play.</p>
+      <div class="role-pick-grid">
+        <button type="button" class="role-pick-btn" data-role="gk"><span class="pos-badge">GK</span><span><b>Goalkeeper</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="cb"><span class="pos-badge dark">CB</span><span><b>Centre Backs</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="deepcm"><span class="pos-badge dark">CM</span><span><b>Deep CM</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="advcm"><span class="pos-badge">CM</span><span><b>Advanced CMs</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="wm"><span class="pos-badge">LM</span><span><b>Wide Midfielders</b></span></button>
+        <button type="button" class="role-pick-btn" data-role="cf"><span class="pos-badge">CF</span><span><b>Centre Forward</b></span></button>
+      </div>
+    </div>
+
+    <div id="screen-quiz" class="hidden">
+      <p class="tag" id="quiz-role-tag">Question</p>
+      <h2 id="quiz-role-heading">Team Quiz</h2>
+      <div class="quiz-card">
+        <div class="quiz-progress" id="quiz-progress">Question 1 of 8</div>
+        <h3 class="quiz-q" id="quiz-question"></h3>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-feedback hidden" id="quiz-feedback"></div>
+        <div class="quiz-btn-row">
+          <button type="button" class="quiz-btn-primary hidden" id="quiz-next">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="screen-score" class="hidden">
+      <p class="tag">Result</p>
+      <h2>How Did You Do?</h2>
+      <div class="quiz-score" id="quiz-score-num">0/8</div>
+      <p class="quiz-score-sub" id="quiz-score-msg"></p>
+      <div id="quiz-review" class="quiz-review"></div>
+      <div class="quiz-btn-row" style="justify-content:center">
+        <button type="button" class="quiz-btn-primary" id="btn-try-again">Try Again</button>
+        <button type="button" class="quiz-btn-secondary" id="btn-pick-another">Pick Another Position</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt=""></a><span>Abbey Lane Saturday Team &middot; Hawks</span><a href="index.html"><img src="assets/hawks-badge.png" alt=""></a></div>
+  </div>
+</footer>
+
+<script>
+const SHARED = [
+  {q:"Our 2-5-1 shape is best described as…",correct:"A starting point, not a fixed spot",wrong:["A rule you never break","Where you must stay all game","Only for kick-offs"],fb:"Positions are where you start, not where you're stuck. Read the game and react."},
+  {q:"A centre back drives forward into midfield with the ball. What should happen?",correct:"The nearest midfielder drops in to cover the gap",wrong:["Everyone stays where they are","The other CB goes too","The striker drops to defend"],fb:"Someone covers, someone fills in — the shape stays whole."},
+  {q:"Space opens up ahead of you and you're free. You should…",correct:"Go and take it — a teammate covers the gap you leave",wrong:["Stay in your position","Wait to be told","Pass backwards"],fb:"Be brave. Make the choice and trust a teammate to cover."},
+  {q:"What are our three team rules?",correct:"Hunt in pairs, always give a passing option, go through-round-over",wrong:["Stay in position, pass short, defend deep","Press alone, go long, mark tight","Win headers, shoot early, sit back"],fb:"Hunt in pairs · always give a passing option · through, round or over."},
+  {q:"When we build up, we try to play…",correct:"Through them if we can, only long when the space is shut",wrong:["Long every time","Backwards to keep it safe","Only down the wings"],fb:"Through, round, then over — in that order."},
+  {q:"When one player goes to press, the nearest teammate should…",correct:"Adjust alongside to keep our shape balanced",wrong:["Stand still","Press too","Drop to the goalline"],fb:"Never press alone — hunt in pairs."},
+  {q:"A teammate is being pressed and has no easy pass. Your job is to…",correct:"Move to give them a passing option",wrong:["Stay still","Shout louder","Turn away"],fb:"Always give a passing option — never leave them stuck."},
+  {q:"We win the ball back high up the pitch. First thought?",correct:"Attack quickly while they're out of shape",wrong:["Pass back to keep it","Stop and wait","Clear it long"],fb:"Win it high, hurt them fast."},
+  {q:"\"Hunt in pairs\" means…",correct:"Never press alone — the nearest teammate goes too",wrong:["Defend in twos all game","Always pass to a partner","Mark two players each"],fb:"Two of us press together, or not at all."},
+  {q:"You've made a mistake and lost the ball. Best reaction?",correct:"React straight away and help win it back",wrong:["Stop and complain","Blame a teammate","Drop your head"],fb:"Mistakes happen — react and go again."},
+  {q:"What makes us hard to play against as a team?",correct:"We cover for each other and the shape stays whole",wrong:["We all stay in fixed spots","We defend deep only","We never leave our positions"],fb:"Someone covers, someone fills in."},
+  {q:"\"Go through, round or over\" tells us the order to…",correct:"Try to play out — through the middle first, long as a last resort",wrong:["Dribble past players","Take a corner","Press their keeper"],fb:"Through, then round, then over."}
+];
+
+const ROLES = {
+  gk:{label:"Goalkeeper",questions:[
+    {q:"Their striker closes you down with the ball at your feet. Best first thought?",correct:"Stay calm, look for a short pass to keep it",wrong:["Hoof it clear","Dribble past him","Kick it out"],fb:"You start our attacks — be brave and keep possession when you can."},
+    {q:"We're pressing high up the pitch. Where should you be?",correct:"Up towards the edge of my box to sweep in behind",wrong:["On my line","In the six-yard box","By the corner flag"],fb:"Push up when we're high so nothing gets in behind."},
+    {q:"Before the ball reaches you, you should…",correct:"Scan to see my options",wrong:["Close my eyes","Watch only the ball","Turn around"],fb:"Scan early so you know your options before it arrives."},
+    {q:"Your main job when we have the ball is to be…",correct:"The spare player, always available for a pass back",wrong:["A second striker","A defender only","A shot-stopper only"],fb:"You're the spare man — help us switch and keep the ball."},
+    {q:"When we're pinned back and defending, you should…",correct:"Drop, command my box and organise the players ahead",wrong:["Stay high","Run out to tackle","Ignore the defenders"],fb:"Drop when we're pinned, organise, and own your box."},
+    {q:"Your defender is about to receive with a striker closing in. You should…",correct:"Offer a safe angle so they can pass back to me",wrong:["Hide behind the goal","Shout at them","Stay on my line"],fb:"Be the safe out-ball behind them."},
+    {q:"The ball's on our right and it's crowded. Best option if it comes to you?",correct:"Switch it to the free side",wrong:["Kick it back where it came","Hoof it out","Hold it forever"],fb:"You can see the whole pitch — switch us to space."},
+    {q:"What's the danger of always kicking it long?",correct:"We give the ball away and invite pressure back",wrong:["Nothing, it's safest","We always score","It wastes time only"],fb:"Play out when it's on — keep possession."},
+    {q:"A cross comes into your box that you can reach. You should…",correct:"Call early and go and claim it",wrong:["Stay on my line and hope","Leave it to a defender silently","Wait and see"],fb:"Call it early and take charge of your box."},
+    {q:"When we're attacking and camped in their half, you should be…",correct:"Higher up, ready to sweep and keep us pushed on",wrong:["Stuck on my line","Sat in the six-yard box","Behind the goal"],fb:"Push up as the sweeper when we're on top."}
+  ]},
+  cb:{label:"Centre Backs",questions:[
+    {q:"At a goal kick, where do you start?",correct:"Split wide, just outside the six-yard box",wrong:["In the centre","Up with the striker","On the wing"],fb:"Split wide to give us width to build from."},
+    {q:"You receive with no one pressing you. Best option?",correct:"Drive forward into midfield — if a midfielder covers behind",wrong:["Pass straight back to the keeper","Hoof it long","Stand still"],fb:"Step in when it's on, but only if someone fills the gap."},
+    {q:"Your centre-back partner steps out to challenge. You should…",correct:"Cover behind him",wrong:["Step out too","Go man-mark the winger","Push up for offside"],fb:"One steps, one covers — always."},
+    {q:"A long ball is played over the top. Your first priority is…",correct:"Defend the space in behind",wrong:["Win a header at all costs","Dribble it out","Appeal for offside"],fb:"Protect the space in behind first."},
+    {q:"How do you receive the ball to play forward quickly?",correct:"Side-on, so my first touch goes forward",wrong:["Facing my own goal","Flat-footed","On my heels"],fb:"Open your body — first touch forward."},
+    {q:"Their striker drops off into midfield. Do you follow?",correct:"Only so far — pass him on to a midfielder and hold the line",wrong:["Follow him everywhere","Ignore him completely","Mark him into their half"],fb:"Don't get dragged out — hand him over and stay compact."},
+    {q:"You and your partner should always…",correct:"Talk to each other and stay connected",wrong:["Defend in silence","Split far apart","Both attack the ball"],fb:"Communication keeps the back line solid."},
+    {q:"We win it and break forward. What do you do?",correct:"Push the line up to support and stay compact",wrong:["Stay deep on my own","Sprint up as a striker","Stop and watch"],fb:"Step up together when we win it."},
+    {q:"A striker is running in behind. Do you dive in for the tackle?",correct:"No — stay on my feet and jockey",wrong:["Slide in straight away","Pull his shirt","Turn and chase blindly"],fb:"Stay on your feet — don't dive in."},
+    {q:"At an attacking corner, your job is to…",correct:"Get up and attack it — I'm a main aerial threat",wrong:["Stay back on the halfway line","Mark our own player","Stay in goal"],fb:"Big at both ends — attack their box."}
+  ]},
+  deepcm:{label:"Deep CM",questions:[
+    {q:"Where do you position to help us build?",correct:"Central, dropping in front of the centre backs to pick it up",wrong:["Out wide","Up with the striker","In their box"],fb:"Stay central and link the CBs to the rest of us."},
+    {q:"You get the ball with a defender behind you. Ideal touch?",correct:"Receive on the half-turn and look forward",wrong:["Pass it straight back","Shield it and wait","Turn blindly"],fb:"Half-turn and look forward first."},
+    {q:"Out of possession, your main job is to…",correct:"Screen the space in front of the back two",wrong:["Join the striker pressing","Mark their winger","Stay on the goalline"],fb:"Protect in front of the defence — cut out the pass to their strikers."},
+    {q:"A centre back steps up and leaves a gap. You should…",correct:"Be first to drop into the gap",wrong:["Stay where I am","Push forward","Mark tighter up the pitch"],fb:"You're the first cover when a CB steps out."},
+    {q:"To keep giving passing options, you should…",correct:"Keep moving to offer angles",wrong:["Stand still and call for it","Stay behind a defender","Sprint away"],fb:"Never stand still — always offer an angle."},
+    {q:"Best way to describe your role in one line?",correct:"The calm link that keeps us connected",wrong:["The main goalscorer","The deepest defender","The winger"],fb:"You tidy everything up and link the team."},
+    {q:"You get the ball facing your own goal under no pressure. Do you…",correct:"Turn out and look forward",wrong:["Pass straight back every time","Hold it and wait","Dribble backwards"],fb:"Turn and look forward whenever you can."},
+    {q:"Their attack is building through the middle. You should…",correct:"Block the pass into their strikers",wrong:["Push up to press their keeper","Mark a winger","Stay forward"],fb:"Screen the middle — protect the back two."},
+    {q:"Why do you rarely make forward runs into their box?",correct:"I hold the middle so we stay balanced",wrong:["I'm not allowed","I'm too slow","It doesn't matter"],fb:"You're the anchor — stay balanced behind the play."},
+    {q:"Your first touch in a tight space should be…",correct:"Away from pressure, into space",wrong:["Straight to a teammate always","A big touch forward","Back to the keeper"],fb:"Protect it — first touch into space."}
+  ]},
+  advcm:{label:"Advanced CMs",questions:[
+    {q:"Best place to receive to hurt them?",correct:"In the pockets between their midfield and defence",wrong:["Next to the deep CM","On the wing","In my own half"],fb:"Find the space between their lines."},
+    {q:"You and your midfield partner should…",correct:"Stay on different lines to each other",wrong:["Both drop deep","Both push high","Stand next to each other"],fb:"Different lines — don't crowd each other."},
+    {q:"Before the ball comes to you, you should…",correct:"Check my shoulder so I know what's around me",wrong:["Call loudly","Close my eyes","Stand still"],fb:"Check your shoulder early — receive facing forward."},
+    {q:"Your midfield partner jumps out to press. You…",correct:"Tuck in to cover the space",wrong:["Press too","Stay forward","Drop to the goalline"],fb:"One presses, one covers."},
+    {q:"What best describes your role?",correct:"Box to box — help attack and defence",wrong:["Defend only","Attack only","Stay on the halfway line"],fb:"You're the engine — both ends of the pitch."},
+    {q:"You receive between their lines facing forward. Best next action?",correct:"Drive at them or slide a runner in",wrong:["Pass straight back","Dribble backwards","Stop the ball dead"],fb:"Face forward and make something happen."},
+    {q:"What's your job when we lose the ball?",correct:"Counter-press to win it back quickly",wrong:["Jog back slowly","Stay forward and wait","Blame the defence"],fb:"Lose it? Win it straight back."},
+    {q:"Should both of you be in the box for a chance?",correct:"One arrives late, one holds for the loose ball",wrong:["Both crash the box","Both stay out","Neither goes in"],fb:"One in, one covering — read it."},
+    {q:"You're arriving late at the edge of the box as a cross comes in. You should…",correct:"Attack the space for a shot or second ball",wrong:["Stop on the edge","Turn back","Stand and watch"],fb:"Late runs win goals — attack it."},
+    {q:"What best keeps you effective all game?",correct:"Timing runs and picking my moments",wrong:["Sprinting everywhere non-stop","Staying still to save energy","Only attacking"],fb:"Read when to go and when to hold."}
+  ]},
+  wm:{label:"Wide Midfielders",questions:[
+    {q:"When we're building up, where should you be?",correct:"High and wide, holding the touchline",wrong:["Inside next to the CM","Dropping deep","In the centre circle"],fb:"Hold your width — make the pitch big."},
+    {q:"The ball's on the far side of the pitch. You should…",correct:"Come inside to threaten the back post",wrong:["Stay glued to my touchline","Drop to defend","Stand still"],fb:"Far side? Come in and attack the back post."},
+    {q:"Out of possession you should…",correct:"Track back to help defend and press their wide players",wrong:["Stay up top","Stay on the wing doing nothing","Go central"],fb:"Track back and help — win it back together."},
+    {q:"A teammate gets dragged out of position near you. You…",correct:"Shuttle across to cover the space",wrong:["Stay wide","Push forward","Ignore it"],fb:"Be ready to fill in — cover for each other."},
+    {q:"Your two biggest strengths for the team are…",correct:"Width in attack and pace on the break",wrong:["Heading and tackling","Staying central","Slowing play down"],fb:"Make the pitch big, then get us up it fast."},
+    {q:"Why hold your width instead of drifting inside?",correct:"It stretches them and opens space in the middle",wrong:["It's easier","To stay out of the game","To avoid defending"],fb:"Width for us is space for everyone else."},
+    {q:"You get the ball wide, one-on-one with their defender. First thought?",correct:"Attack them and get in behind",wrong:["Pass back immediately","Stop and wait","Cut inside slowly"],fb:"Be brave — take them on and get in behind."},
+    {q:"When shouldn't you come short for the ball?",correct:"Too early — I should stay high till it's ready",wrong:["Never, always come short","Whenever I like","Only at corners"],fb:"Stay patient — attack the space when it's on."},
+    {q:"Their full-back is high up the pitch on your side. You should…",correct:"Track back and deny the space in behind us",wrong:["Stay up top","Go central","Stand and point"],fb:"Track back and protect your side."},
+    {q:"On a fast break, your job is to…",correct:"Get up the pitch quickly and stretch the play",wrong:["Slow it down","Stay deep","Come inside"],fb:"Pace on the break — get us up the pitch."}
+  ]},
+  cf:{label:"Centre Forward",questions:[
+    {q:"How do you make yourself hard to mark?",correct:"Position between their centre backs or drift across them",wrong:["Stand still in the middle","Drop deep every time","Stay on the wing"],fb:"Get between them so they can't pick you up."},
+    {q:"A long ball comes to you under pressure. Your job is to…",correct:"Hold it up and bring others into play",wrong:["Shoot first time","Dribble past everyone","Let it run out"],fb:"Be the out-ball — hold it and link us up."},
+    {q:"When you lead the press, you should…",correct:"Curve my run to force them one way, with a teammate joining",wrong:["Sprint straight at the keeper alone","Stand off","Press then stop"],fb:"Curve it, force one side, never press alone."},
+    {q:"To stretch their defence, you make runs…",correct:"Into the channels",wrong:["Back towards my own goal","Out to the corner flag","Nowhere, I stay still"],fb:"Run the channels — pull them apart."},
+    {q:"Why do you stay high when we defend?",correct:"So I'm the out-ball when we win it and can start the counter",wrong:["To have a rest","To stay onside only","No reason"],fb:"Stay high — you're how we break at speed."},
+    {q:"Their two centre backs are marking you tightly. Good movement?",correct:"Pull wide or drop to drag one out of position",wrong:["Stand between them and wait","Stay still","Go in goal"],fb:"Move them around — create space to attack."},
+    {q:"We're under pressure and need a breather. You should…",correct:"Show for the ball and hold it up",wrong:["Hide","Drop into defence","Run offside"],fb:"Be the out-ball — give the team a rest on you."},
+    {q:"What starts our defending from the front?",correct:"My press, forcing them one way",wrong:["Waiting on the halfway line","Dropping into midfield","Doing nothing"],fb:"Defending starts with you up top."},
+    {q:"A defender has the ball and you press alone with no support. Best choice?",correct:"Force him one way and wait for a teammate",wrong:["Dive in and get beaten","Stop pressing","Foul him"],fb:"Press with a plan — don't get beaten alone."},
+    {q:"Why make runs into the channels rather than staying central?",correct:"It pulls their defenders apart and creates gaps",wrong:["It's easier","To avoid the ball","No reason"],fb:"Stretch them wide to open the middle."}
+  ]}
+};
+
+function shuffle(arr){
+  const a = arr.slice();
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+const state = { role:null, questions:[], index:0, score:0, wrong:[] };
+
+function buildQuestionSet(roleKey){
+  const role = ROLES[roleKey];
+  const fiveFromRole = shuffle(role.questions).slice(0,5);
+  const threeShared = shuffle(SHARED).slice(0,3);
+  const combined = shuffle(fiveFromRole.concat(threeShared));
+  return combined.map(function(q){
+    const opts = shuffle([q.correct].concat(q.wrong));
+    return { text:q.q, options:opts, correctIndex:opts.indexOf(q.correct), feedback:q.fb };
+  });
+}
+
+function showScreen(name){
+  document.getElementById('screen-roles').classList.toggle('hidden', name !== 'roles');
+  document.getElementById('screen-quiz').classList.toggle('hidden', name !== 'quiz');
+  document.getElementById('screen-score').classList.toggle('hidden', name !== 'score');
+  if(name !== 'score'){
+    document.getElementById('quiz-app').scrollIntoView({block:'start'});
+  }
+}
+
+function startQuiz(roleKey){
+  state.role = roleKey;
+  state.questions = buildQuestionSet(roleKey);
+  state.index = 0;
+  state.score = 0;
+  state.wrong = [];
+  document.getElementById('quiz-role-tag').textContent = ROLES[roleKey].label;
+  document.getElementById('quiz-role-heading').textContent = 'Question ' + (state.index+1);
+  showScreen('quiz');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = state.questions[state.index];
+  document.getElementById('quiz-role-heading').textContent = ROLES[state.role].label + ' Quiz';
+  document.getElementById('quiz-progress').textContent = 'Question ' + (state.index+1) + ' of ' + state.questions.length;
+  document.getElementById('quiz-question').textContent = q.text;
+  const optWrap = document.getElementById('quiz-options');
+  optWrap.innerHTML = '';
+  q.options.forEach(function(opt,i){
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'quiz-option';
+    btn.textContent = opt;
+    btn.addEventListener('click', function(){ selectAnswer(i); });
+    optWrap.appendChild(btn);
+  });
+  const fb = document.getElementById('quiz-feedback');
+  fb.classList.add('hidden');
+  fb.classList.remove('wrong');
+  fb.textContent = '';
+  document.getElementById('quiz-next').classList.add('hidden');
+}
+
+function selectAnswer(i){
+  const q = state.questions[state.index];
+  const buttons = document.querySelectorAll('#quiz-options .quiz-option');
+  buttons.forEach(function(b,idx){
+    b.disabled = true;
+    if(idx === q.correctIndex) b.classList.add('correct');
+    if(idx === i && i !== q.correctIndex) b.classList.add('incorrect');
+  });
+  const fb = document.getElementById('quiz-feedback');
+  fb.textContent = q.feedback;
+  fb.classList.remove('hidden');
+  if(i === q.correctIndex){
+    state.score++;
+    fb.classList.remove('wrong');
+  } else {
+    fb.classList.add('wrong');
+    state.wrong.push({ text:q.text, correct:q.options[q.correctIndex], feedback:q.feedback });
+  }
+  const nextBtn = document.getElementById('quiz-next');
+  nextBtn.textContent = (state.index === state.questions.length - 1) ? 'See Score' : 'Next';
+  nextBtn.classList.remove('hidden');
+  nextBtn.focus();
+}
+
+function nextQuestion(){
+  state.index++;
+  if(state.index >= state.questions.length){
+    showScore();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showScore(){
+  showScreen('score');
+  document.getElementById('quiz-score-num').textContent = state.score + '/' + state.questions.length;
+  let msg;
+  if(state.score >= 7){ msg = "Excellent — you know your role."; }
+  else if(state.score >= 5){ msg = "Good effort — go again and sharpen it up."; }
+  else { msg = "Give it another go — review the ones you missed below."; }
+  document.getElementById('quiz-score-msg').textContent = msg;
+  const review = document.getElementById('quiz-review');
+  review.innerHTML = '';
+  if(state.wrong.length === 0){
+    const p = document.createElement('p');
+    p.className = 'sec-note';
+    p.style.margin = '0';
+    p.textContent = 'No misses — nice work.';
+    review.appendChild(p);
+  } else {
+    state.wrong.forEach(function(w){
+      const div = document.createElement('div');
+      div.className = 'quiz-review-item';
+      const rq = document.createElement('div'); rq.className = 'rq'; rq.textContent = w.text;
+      const ra = document.createElement('div'); ra.className = 'ra'; ra.textContent = 'Correct: ' + w.correct;
+      const rf = document.createElement('div'); rf.className = 'rf'; rf.textContent = w.feedback;
+      div.appendChild(rq); div.appendChild(ra); div.appendChild(rf);
+      review.appendChild(div);
+    });
+  }
+}
+
+document.querySelectorAll('.role-pick-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){ startQuiz(btn.dataset.role); });
+});
+document.getElementById('quiz-next').addEventListener('click', nextQuestion);
+document.getElementById('btn-try-again').addEventListener('click', function(){ startQuiz(state.role); });
+document.getElementById('btn-pick-another').addEventListener('click', function(){ showScreen('roles'); });
+</script>
+</body>
+</html>
