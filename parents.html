@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawks &mdash; Parents' Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --ink:#111214; --panel:#FFFFFF; --panel2:#F5F6F4; --line:#E2E3DF;
+  --gold:#C79A00; --gold-dim:#8A6A00; --paper:#141518; --mute:#4C4E52; --grass:#1C4B2A;
+  --navbg:#0B0B0C; --navgold:#FFC400;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#EFEFEC}
+body{margin:0;background:#EFEFEC;color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold-dim)}
+
+header.hero{border-bottom:3px solid var(--gold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;color:#F2F2F0;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--gold)}
+.sub{color:#C9CBD0;max-width:60ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+nav.tabs{position:sticky;top:0;z-index:20;background:#0B0B0C;
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:#9A9CA3;
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:#fff;outline:none}
+.tabs a[aria-current="page"]{color:var(--navgold);border-bottom-color:var(--navgold)}
+
+section{padding:40px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px;background:#EFEFEC}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold-dim);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.35rem,3.2vw,1.9rem);margin:0 0 10px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 20px;max-width:66ch}
+h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  font-size:1.18rem;margin:22px 0 10px}
+
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin-bottom:9px;max-width:72ch}
+ul.plain li::marker{color:var(--gold-dim)}
+
+.key{border-left:4px solid var(--gold);background:var(--panel2);padding:14px 16px;
+  border-radius:0 6px 6px 0;margin-top:16px;font-size:.97rem;max-width:74ch}
+.key strong{color:var(--gold-dim)}
+
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:6px}
+.award{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);
+  border-radius:6px;padding:18px 16px}
+.award b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.1rem;display:block;margin-bottom:4px}
+.award span{font-size:.92rem;color:#3A3C40}
+
+.money{background:var(--gold);color:#000;border-radius:8px;padding:20px 22px;margin-bottom:16px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.money .amt{font-family:'Archivo Black',sans-serif;font-size:2.6rem;line-height:1}
+.money .amt small{font-size:.9rem;display:block;letter-spacing:.04em}
+.money .txt{flex:1 1 260px;font-weight:500}
+
+.help{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}
+.help div{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:.93rem}
+.help b{color:var(--gold-dim);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.05em;display:block;margin-bottom:2px;font-size:.95rem}
+
+.outcomes{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.outcomes span{background:#EDE6CE;border:1px solid #D8CDA6;border-radius:999px;
+  padding:6px 13px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.05em;font-size:.86rem;color:#141518;font-weight:600}
+
+.process{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin:18px 0 4px}
+.process div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:6px;padding:16px 18px}
+.process b{display:block;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-dim);font-size:1.08rem;margin-bottom:4px}
+.process .lead{font-weight:600;font-size:.96rem}
+.process p{margin:6px 0 0;font-size:.93rem;color:#3A3C40}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+
+@media print{body{background:#fff;color:#000} nav.tabs{display:none} section{break-inside:avoid}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><a href="index.html"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></a></div>
+    <div class="hero-txt">
+      <p class="eyebrow">For a great season</p>
+      <h1>Parents' Guide<span class="l2">Enjoy the season with us</span></h1>
+      <p class="sub">Everything you need to help the boys have a brilliant, enjoyable season. Your coaches are Tim and Rob &mdash; please come and talk to us any time.</p>
+    </div>
+    <div class="club"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></a></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="set-piece-roles.html">Set Pieces</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a><a href="quiz.html">Quiz</a><a href="parents.html" aria-current="page">Parents</a></div></nav>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Match day</p>
+    <h2>Match day basics</h2>
+    <ul class="plain">
+      <li>Home matches usually kick off at <strong>11am at Holmesfield</strong>. If there's an early Sheffield United or Wednesday game, we'll try to move kickoff earlier.</li>
+      <li>Away games are often only confirmed to us on the Tuesday or Wednesday before. We'll share the location and time as early as we can, on Spond and in the group chat.</li>
+      <li>Please respond to availability requests as soon as you can &mdash; it's what lets us plan the team.</li>
+      <li>Arrive in kit. Grip socks are fine, but they must be the same colour as our kit socks. <strong>Shin pads must be worn.</strong></li>
+      <li>Wrap up in the winter months. Skins should ideally be black. We're looking into team jackets; in the meantime we have dry robes for the subs that fit most.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Leadership</p>
+    <h2>Captains</h2>
+    <ul class="plain">
+      <li>We'll have <strong>three captains</strong> for the first half of the season, rotating so there's a different one each week. This also lets us swap the armband easily in-game. The captains change for the second half of the season.</li>
+      <li>The captain wears the armband &mdash; this is a league rule.</li>
+      <li>A captain's duties: set a positive environment, lead by example on kit, arrival and effort, and encourage teammates.</li>
+      <li>Our expectation is that <strong>every player acts like a captain</strong>, whether they're wearing the armband or not.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Fair minutes</p>
+    <h2>Game time</h2>
+    <ul class="plain">
+      <li>We have 14 players for 9 spaces. We play with high intensity, so fresh legs are key to how we succeed.</li>
+      <li>Most weeks, players will average around <strong>40 minutes</strong>. The goalkeeper plays the full 60.</li>
+      <li>If everyone is fit and available, a couple of players each week will get around 30 minutes. We manage this carefully and share it round.</li>
+      <li>We keep a spreadsheet of minutes and appearances to keep things fair and help plan substitutions, while still reacting to what's happening in the game.</li>
+      <li>Fair game time and a balanced team on the pitch come first.</li>
+    </ul>
+    <div class="key"><strong>If you ever have a concern about game time</strong>, please message Tim or Rob directly a couple of days before a game, rather than on the day or straight after. It gives everyone time to reflect on whether it's a significant issue.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Development</p>
+    <h2>Positions</h2>
+    <p class="sec-note">We feel we know the players' positions well by now. But we're always keen to hear from them if there's a position they'd like to try, want more advice on, or aren't enjoying &mdash; and we can look at adapting that for future games.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Full time</p>
+    <h2>After the match</h2>
+    <p class="sec-note">We'll have a quick chat with the players at the end of each game before they leave. Parents are always welcome to come over and listen in, or we can have a quick debrief as the children get to their cars.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Celebrating the boys</p>
+    <h2>Monthly awards</h2>
+    <p class="sec-note">We won't do awards at the end of each match, and we won't do an end-of-season presentation. Instead, there are three awards every month:</p>
+    <div class="awards">
+      <div class="award"><b>Supporters' Player</b><span>Parents vote for the player who stood out that month.</span></div>
+      <div class="award"><b>Players' Player</b><span>The children vote for their standout teammate.</span></div>
+      <div class="award"><b>Coaches' Player</b><span>Chosen by Tim and Rob.</span></div>
+    </div>
+    <h3>How it works</h3>
+    <ul class="plain">
+      <li>Voting is through an electronic form with space to say why.</li>
+      <li>Winners receive a <strong>medal to keep</strong> and a <strong>trophy for the month</strong>, presented at training or before a match, with a bit of a fuss and some photo opportunities.</li>
+    </ul>
+    <div class="key">Why we do it this way: regular celebration gives the boys a really positive experience, and it avoids the anxiety some children feel at end-of-season presentations &mdash; around who has and hasn't won, and going on stage in front of strangers.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Training</p>
+    <h2>Training</h2>
+    <ul class="plain">
+      <li>We put a lot of effort into training. We plan a six-week block of focuses and choose drills around the numbers we have at each session.</li>
+      <li>Please let us know your child's availability as early as you can. Last-minute issues can't always be avoided, but knowing in advance really helps us plan.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Supporting the team</p>
+    <h2>Money and how you can help</h2>
+    <div class="money">
+      <div class="amt">&pound;20<small>per player</small></div>
+      <div class="txt">Collected once at the start of the season to cover ref's fees &mdash; rather than each week. It's fairer, and avoids the same people always paying because they happened to have cash.</div>
+    </div>
+    <h3>Sponsored walk</h3>
+    <p class="sec-note">Coming up soon &mdash; this raises money for the monthly trophies, extra training equipment and general bits like water bottle holders and kit bags. We don't get much from the club, so it helps us enhance what we do for the boys. Sharing it around is a big help.</p>
+    <h3>Jobs we'd love a hand with</h3>
+    <div class="help">
+      <div><b>Nets</b>Out before home matches, away after.</div>
+      <div><b>Corner flags</b>Getting them out before games.</div>
+      <div><b>Christmas do</b>Help organising a team get-together.</div>
+      <div><b>Refreshments</b>Oranges or drinks for the boys at games.</div>
+    </div>
+    <p class="sec-note" style="margin-top:14px">Any support is welcome &mdash; just let us know.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">How we coach</p>
+    <h2>Our approach &mdash; process over outcome</h2>
+    <ul class="plain">
+      <li>We want to win, and the boys are competitive &mdash; that's a good thing. But the scoreline isn't something we can fully control, so it isn't the only way we judge a game.</li>
+      <li>There are lots of outcomes that matter. You can lose a game and still do many of these brilliantly:</li>
+    </ul>
+    <div class="outcomes">
+      <span>Effort</span><span>Attitude</span><span>Decision-making</span><span>Looking after the ball</span>
+      <span>Encouraging teammates</span><span>Energy</span><span>Involvement</span><span>Enjoyment</span>
+    </div>
+    <ul class="plain">
+      <li>So we focus on the <strong>process</strong> &mdash; because we can't just decide to win, but we <em>can</em> control the things that make winning, and playing well, more likely. Get the process right and the good outcomes tend to follow.</li>
+    </ul>
+
+    <h3>How the boys can affect the outcome</h3>
+    <p class="sec-note">These are things every player has control over &mdash; and where you can really help at home.</p>
+    <div class="process">
+      <div>
+        <b>Energy &amp; involvement</b>
+        <p class="lead">Look after yourself before the game.</p>
+        <p>A good night's sleep and the right food and drink before a match means more energy to press, make runs and stay involved for their minutes. It starts the night before, not at kick-off.</p>
+      </div>
+      <div>
+        <b>Technique</b>
+        <p class="lead">Practise, don't just hope.</p>
+        <p>Want a better first touch, pass or finish? It comes from practising and working on the feedback we give &mdash; not from hoping it turns up on match day. Ten minutes in the garden adds up.</p>
+      </div>
+      <div>
+        <b>Decision-making</b>
+        <p class="lead">Listen and watch football.</p>
+        <p>Better decisions come from listening to advice, asking questions, and watching good players in their position &mdash; noticing <em>why</em> they do things, then trying it themselves.</p>
+      </div>
+      <div>
+        <b>Attitude</b>
+        <p class="lead">Handle the frustration.</p>
+        <p>Things won't always go their way. Learning to be disappointed without sulking or giving up &mdash; and getting straight onto the next job &mdash; keeps them, and the team, in the game.</p>
+      </div>
+    </div>
+
+    <ul class="plain">
+      <li>None of these are about being the most talented player. They're choices any of the boys can make &mdash; and they're the same habits that help well beyond football.</li>
+    </ul>
+    <div class="key"><strong>How you can back this at home:</strong> help with the process &mdash; good sleep and food before games, a few minutes practising, watching football together &mdash; and praise effort, attitude and good decisions, not just goals and results.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="tag">Get behind them</p>
+    <h2>Sideline support</h2>
+    <p class="sec-note">Home or away, we'd love plenty of support from the sidelines. Positive encouragement helps the boys play with the freedom to try things, make their own decisions and enjoy their football. Get behind them and enjoy the season with us.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt=""></a><span>Abbey Lane Saturday Team &middot; Hawks</span><a href="index.html"><img src="assets/hawks-badge.png" alt=""></a></div>
+    <div>Parents' guide &middot; Have a great season</div>
+  </div>
+</footer>
+</body>
+</html>
