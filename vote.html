@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hawks &mdash; Vote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --ink:#111214; --panel:#FFFFFF; --panel2:#F5F6F4; --line:#E2E3DF;
+  --gold:#C79A00; --gold-dim:#8A6A00; --paper:#141518; --mute:#4C4E52; --grass:#1C4B2A;
+  --navbg:#0B0B0C; --navgold:#FFC400;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:#EFEFEC}
+body{margin:0;background:#EFEFEC;color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold-dim)}
+
+header.hero{border-bottom:3px solid var(--navgold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.06) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--navgold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;color:#fff;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--navgold)}
+.sub{color:#C9CBD0;max-width:60ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+nav.tabs{position:sticky;top:0;z-index:20;background:#0B0B0C;border-bottom:1px solid #2C2E33}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:#9A9CA3;
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:#fff;outline:none}
+.tabs a[aria-current="page"]{color:var(--navgold);border-bottom-color:var(--navgold)}
+
+section{padding:38px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px;background:#EFEFEC}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold-dim);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.35rem,3.2vw,1.9rem);margin:0 0 10px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 20px;max-width:66ch}
+
+.monthflag{display:inline-block;background:var(--navbg);color:var(--navgold);
+  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;
+  font-weight:700;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:14px}
+
+/* vote cards */
+.votegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+form.vote{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);
+  border-radius:10px;padding:22px 20px}
+form.vote h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.35rem;margin:0 0 4px}
+form.vote .who{color:var(--mute);font-size:.92rem;margin:0 0 16px}
+label{display:block;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.05em;font-size:.9rem;color:var(--ink);margin:14px 0 5px;font-weight:700}
+label .req{color:#B00020}
+input[type=text],select,textarea{width:100%;padding:11px 12px;border:1px solid #CFD0CC;
+  border-radius:7px;background:#fff;color:var(--ink);font-family:inherit;font-size:1rem}
+input[type=text]:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(199,154,0,.18)}
+textarea{min-height:84px;resize:vertical}
+select:required:invalid{color:#8A8B87}
+.hint{font-size:.82rem;color:var(--mute);margin:4px 0 0}
+button.cast{margin-top:18px;width:100%;background:var(--gold);color:#000;border:none;
+  border-radius:8px;padding:14px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;font-weight:700;font-size:1.1rem;cursor:pointer}
+button.cast:hover{background:#B98F00}
+button.cast:disabled{opacity:.55;cursor:not-allowed}
+.msg{margin-top:14px;padding:12px 14px;border-radius:8px;font-size:.95rem;display:none}
+.msg.err{display:block;background:#FDECEC;border:1px solid #F3C0C0;color:#8A1020}
+.msg.ok{display:block;background:#E9F6EC;border:1px solid #B6E0C0;color:#14612B}
+.msg.info{display:block;background:#FBF4DC;border:1px solid #E7D6A0;color:#6B5500}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+@media print{nav.tabs{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></div>
+    <div class="hero-txt">
+      <p class="eyebrow">Player of the Month</p>
+      <h1>Cast Your Vote<span class="l2">September</span></h1>
+      <p class="sub">Two votes each month — one for the supporters, one for the players. Pick who stood out and tell us why.</p>
+    </div>
+    <div class="club"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="set-piece-roles.html">Set Pieces</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a><a href="quiz.html">Quiz</a><a href="parents.html">Parents</a><a href="vote.html" aria-current="page">Vote</a></div></nav>
+
+<section>
+  <div class="wrap">
+    <span class="monthflag">Voting for September</span>
+    <h2>Player of the Month</h2>
+    <p class="sec-note">Two forms below. Supporters (parents and anyone watching) use the first. Players use the second. One vote each, please — and you can't vote for your own child, or for yourself.</p>
+
+    <div class="votegrid">
+
+      <!-- SUPPORTERS' VOTE -->
+      <form class="vote" id="supportersForm" data-kind="Supporters">
+        <h3>Supporters' Player</h3>
+        <p class="who">For parents and anyone watching the games.</p>
+
+        <label for="s_name">Your name <span class="req">*</span></label>
+        <input type="text" id="s_name" name="voterName" autocomplete="name" required>
+
+        <label for="s_child">Your child in the team <span class="req">*</span></label>
+        <select id="s_child" name="voterChild" required>
+            <option value="" disabled selected>Choose your child…</option>
+            <option value="Josh">Josh</option>
+            <option value="Harry">Harry</option>
+            <option value="Max">Max</option>
+            <option value="Osca">Osca</option>
+            <option value="Tom">Tom</option>
+            <option value="Chaz">Chaz</option>
+            <option value="Zaev">Zaev</option>
+            <option value="Oliver">Oliver</option>
+            <option value="Zak">Zak</option>
+            <option value="Logan">Logan</option>
+            <option value="Bazza">Bazza</option>
+            <option value="Barnsey">Barnsey</option>
+            <option value="Jesse">Jesse</option>
+            <option value="Troy">Troy</option>
+        </select>
+        <p class="hint">So we can make sure you're not voting for your own child.</p>
+
+        <label for="s_vote">Your vote <span class="req">*</span></label>
+        <select id="s_vote" name="votedFor" required>
+            <option value="" disabled selected>Choose a player…</option>
+            <option value="Josh">Josh</option>
+            <option value="Harry">Harry</option>
+            <option value="Max">Max</option>
+            <option value="Osca">Osca</option>
+            <option value="Tom">Tom</option>
+            <option value="Chaz">Chaz</option>
+            <option value="Zaev">Zaev</option>
+            <option value="Oliver">Oliver</option>
+            <option value="Zak">Zak</option>
+            <option value="Logan">Logan</option>
+            <option value="Bazza">Bazza</option>
+            <option value="Barnsey">Barnsey</option>
+            <option value="Jesse">Jesse</option>
+            <option value="Troy">Troy</option>
+        </select>
+
+        <label for="s_why">Why? <span class="req">*</span></label>
+        <textarea id="s_why" name="reason" required placeholder="Tell us what stood out this month…"></textarea>
+
+        <button type="submit" class="cast">Cast my vote</button>
+        <div class="msg" id="s_msg" role="status" aria-live="polite"></div>
+      </form>
+
+      <!-- PLAYERS' VOTE -->
+      <form class="vote" id="playersForm" data-kind="Players">
+        <h3>Players' Player</h3>
+        <p class="who">For the players to vote for a teammate.</p>
+
+        <label for="p_name">Your name <span class="req">*</span></label>
+        <select id="p_name" name="voterName" required>
+            <option value="" disabled selected>Which player are you?</option>
+            <option value="Josh">Josh</option>
+            <option value="Harry">Harry</option>
+            <option value="Max">Max</option>
+            <option value="Osca">Osca</option>
+            <option value="Tom">Tom</option>
+            <option value="Chaz">Chaz</option>
+            <option value="Zaev">Zaev</option>
+            <option value="Oliver">Oliver</option>
+            <option value="Zak">Zak</option>
+            <option value="Logan">Logan</option>
+            <option value="Bazza">Bazza</option>
+            <option value="Barnsey">Barnsey</option>
+            <option value="Jesse">Jesse</option>
+            <option value="Troy">Troy</option>
+        </select>
+        <p class="hint">Pick your own name so you can't vote for yourself.</p>
+
+        <label for="p_vote">Your vote <span class="req">*</span></label>
+        <select id="p_vote" name="votedFor" required>
+            <option value="" disabled selected>Choose a teammate…</option>
+            <option value="Josh">Josh</option>
+            <option value="Harry">Harry</option>
+            <option value="Max">Max</option>
+            <option value="Osca">Osca</option>
+            <option value="Tom">Tom</option>
+            <option value="Chaz">Chaz</option>
+            <option value="Zaev">Zaev</option>
+            <option value="Oliver">Oliver</option>
+            <option value="Zak">Zak</option>
+            <option value="Logan">Logan</option>
+            <option value="Bazza">Bazza</option>
+            <option value="Barnsey">Barnsey</option>
+            <option value="Jesse">Jesse</option>
+            <option value="Troy">Troy</option>
+        </select>
+
+        <label for="p_why">Why? <span class="req">*</span></label>
+        <textarea id="p_why" name="reason" required placeholder="What made them your player of the month?"></textarea>
+
+        <button type="submit" class="cast">Cast my vote</button>
+        <div class="msg" id="p_msg" role="status" aria-live="polite"></div>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+(function(){
+  // ==== PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BETWEEN THE QUOTES BELOW ====
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDSiY7jtvcyzzHI6mbc62LYTLi0-_dSQ2UjwDA-n3FlhSM90b4x0TF7OtaE5DyqZmK/exec";
+  var MONTH = "September";
+
+  function alreadyVoted(kind){
+    try { return localStorage.getItem("hawksVote_"+kind+"_"+MONTH) === "1"; }
+    catch(e){ return false; }
+  }
+  function markVoted(kind){
+    try { localStorage.setItem("hawksVote_"+kind+"_"+MONTH,"1"); } catch(e){}
+  }
+  function show(el, cls, text){ el.className = "msg "+cls; el.textContent = text; }
+
+  function wire(formId, msgId, kind, childSel, nameSel, voteSel){
+    var form = document.getElementById(formId);
+    var msg  = document.getElementById(msgId);
+    if(!form) return;
+
+    if(alreadyVoted(kind)){
+      show(msg,"info","Thanks — it looks like you've already voted for "+MONTH+" on this device.");
+    }
+
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      msg.className = "msg";
+
+      var votedFor = form.querySelector(voteSel).value;
+      var ownName  = nameSel ? form.querySelector(nameSel).value : "";
+      var child    = childSel ? form.querySelector(childSel).value : "";
+
+      // Rule: can't vote for own child (supporters) / yourself (players)
+      if(kind === "Supporters" && child && votedFor && child === votedFor){
+        show(msg,"err","You can't vote for your own child. Please pick another player.");
+        return;
+      }
+      if(kind === "Players" && ownName && votedFor && ownName === votedFor){
+        show(msg,"err","You can't vote for yourself. Please pick a teammate.");
+        return;
+      }
+      if(alreadyVoted(kind)){
+        show(msg,"info","You've already voted for "+MONTH+" on this device.");
+        return;
+      }
+
+      var btn = form.querySelector("button.cast");
+      btn.disabled = true; btn.textContent = "Sending…";
+
+      var data = new FormData(form);
+      data.append("voteType", kind);
+      data.append("month", MONTH);
+
+      if(SCRIPT_URL.indexOf("__SCRIPT")===0){
+        show(msg,"err","Voting isn't switched on yet — the form still needs its Google link added.");
+        btn.disabled=false; btn.textContent="Cast my vote";
+        return;
+      }
+
+      fetch(SCRIPT_URL, { method:"POST", body:data })
+        .then(function(){
+          markVoted(kind);
+          form.reset();
+          show(msg,"ok","Thanks for voting! Your "+kind+"' Player vote for "+MONTH+" has been recorded.");
+          btn.textContent="Vote recorded";
+        })
+        .catch(function(){
+          show(msg,"err","Something went wrong sending your vote. Please try again in a moment.");
+          btn.disabled=false; btn.textContent="Cast my vote";
+        });
+    });
+  }
+
+  wire("supportersForm","s_msg","Supporters","#s_child",null,"#s_vote");
+  wire("playersForm","p_msg","Players",null,"#p_name","#p_vote");
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><img src="assets/abbey-lane-badge.jpg" alt=""><span>Abbey Lane Saturday Team &middot; Hawks</span><img src="assets/hawks-badge.png" alt=""></div>
+    <div>Player of the Month voting</div>
+  </div>
+</footer>
+</body>
+</html>
