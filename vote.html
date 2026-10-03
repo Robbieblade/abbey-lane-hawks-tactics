@@ -11,15 +11,14 @@
 :root{
   color-scheme: light;
   --ink:#111214; --panel:#FFFFFF; --panel2:#F5F6F4; --line:#E2E3DF;
-  --gold:#C79A00; --gold-dim:#8A6A00; --paper:#141518; --mute:#4C4E52; --grass:#1C4B2A;
+  --gold:#C79A00; --gold-dim:#8A6A00; --paper:#141518; --mute:#4C4E52;
   --navbg:#0B0B0C; --navgold:#FFC400;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:#EFEFEC}
-body{margin:0;background:#EFEFEC;color:var(--paper);
-  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+body{margin:0;background:#EFEFEC;color:var(--paper);font-family:Inter,system-ui,sans-serif;
+  font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
 .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-em{font-style:italic}
 a{color:var(--gold-dim)}
 
 header.hero{border-bottom:3px solid var(--navgold);
@@ -53,12 +52,23 @@ section{padding:38px 0;border-bottom:1px solid var(--line);scroll-margin-top:60p
 h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
   font-size:clamp(1.35rem,3.2vw,1.9rem);margin:0 0 10px;line-height:1.05}
 .sec-note{color:var(--mute);margin:0 0 20px;max-width:66ch}
-
 .monthflag{display:inline-block;background:var(--navbg);color:var(--navgold);
   font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;
   font-weight:700;font-size:.85rem;padding:5px 14px;border-radius:999px;margin-bottom:14px}
 
-/* vote cards */
+/* winners */
+.winners{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.winner{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.winner img{display:block;width:100%;height:auto}
+.winner .body{padding:16px 18px 20px}
+.winner .award{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--gold-dim);font-weight:700;font-size:.9rem;margin:0 0 2px}
+.winner h3{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:1.3rem;
+  margin:0 0 8px;line-height:1}
+.winner p{margin:0;font-size:.95rem;color:#2C2E30}
+
+/* vote forms */
 .votegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
 form.vote{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);
   border-radius:10px;padding:22px 20px}
@@ -85,6 +95,13 @@ button.cast:disabled{opacity:.55;cursor:not-allowed}
 .msg.ok{display:block;background:#E9F6EC;border:1px solid #B6E0C0;color:#14612B}
 .msg.info{display:block;background:#FBF4DC;border:1px solid #E7D6A0;color:#6B5500}
 
+/* locked state */
+.locked{background:var(--panel);border:1px dashed #CDBE7E;border-radius:12px;padding:30px 24px;text-align:center}
+.locked .big{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:clamp(1.3rem,4vw,1.9rem);
+  color:var(--ink);margin:6px 0 8px}
+.locked .date{color:var(--gold-dim);font-weight:700}
+.locked p{color:var(--mute);max-width:52ch;margin:8px auto 0}
+
 footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
 footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
 footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
@@ -93,35 +110,75 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
 </style>
 </head>
 <body>
-<header class="hero">
-  <div class="wrap hero-inner">
-    <div class="crest"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></div>
-    <div class="hero-txt">
-      <p class="eyebrow">Player of the Month</p>
-      <h1>Cast Your Vote<span class="l2">September</span></h1>
-      <p class="sub">Two votes each month — one for the supporters, one for the players. Pick who stood out and tell us why.</p>
-    </div>
-    <div class="club"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></div>
+<header class="hero"><div class="wrap hero-inner">
+  <div class="crest"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></div>
+  <div class="hero-txt">
+    <p class="eyebrow">Player of the Month</p>
+    <h1>Player of the Month<span class="l2">Winners &amp; voting</span></h1>
+    <p class="sub">See who won, and cast your vote each month — one for the supporters, one for the players.</p>
   </div>
-</header>
+  <div class="club"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></div>
+</div></header>
 <nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="set-piece-roles.html">Set Pieces</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a><a href="quiz.html">Quiz</a><a href="parents.html">Parents</a><a href="vote.html" aria-current="page">Vote</a></div></nav>
 
-<section>
+<section id="winners">
   <div class="wrap">
-    <span class="monthflag">Voting for September</span>
-    <h2>Player of the Month</h2>
-    <p class="sec-note">Two forms below. Supporters (parents and anyone watching) use the first. Players use the second. One vote each, please — and you can't vote for your own child, or for yourself.</p>
+    <span class="monthflag">September winners</span>
+    <h2>September Player of the Month</h2>
+    <p class="sec-note">Our first winners of the season — voted by the supporters, the players, and chosen by the coaches.</p>
+    <div class="winners">
 
-    <div class="votegrid">
+      <div class="winner">
+        <img src="assets/logan-sept.jpg" alt="Logan Brown — Supporters' Player of the Month, September 2026">
+        <div class="body">
+          <p class="award">Supporters' Player</p>
+          <h3>Logan Brown</h3>
+          <p>Supporters picked Logan for his attitude and positivity — always lifting the team, praising good play and keeping spirits up when things aren't going well. He kept his composure when an opponent tried to wind him up, and chipped in with some brilliant goals and quality from corners too.</p>
+        </div>
+      </div>
 
-      <!-- SUPPORTERS' VOTE -->
+      <div class="winner">
+        <img src="assets/osca-sept.jpg" alt="Osca Thompson — Players' Player of the Month, September 2026">
+        <div class="body">
+          <p class="award">Players' Player</p>
+          <h3>Osca Thompson</h3>
+          <p>The players chose Osca for his relentless work rate and the way he leads. Teammates said he's never afraid to put a challenge in, wins everything, is solid at the back and keeps his head — a captain full of encouragement who lifts everyone around him.</p>
+        </div>
+      </div>
+
+      <div class="winner">
+        <img src="assets/zac-sept.jpg" alt="Zac McGarry — Coaches' Player of the Month, September 2026">
+        <div class="body">
+          <p class="award">Coaches' Player</p>
+          <h3>Zac McGarry</h3>
+          <p>Chosen by the coaches for always putting in full effort, following instructions and doing whatever the team needs — including playing multiple positions without complaint — while still delivering real quality with goals and assists.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="vote">
+  <div class="wrap">
+    <span class="monthflag">Voting for October</span>
+    <h2>Cast your October vote</h2>
+    <p class="sec-note">Two forms below. Supporters (parents and anyone watching) use the first, players use the second. One vote each, please — and you can't vote for your own child, or for yourself.</p>
+
+    <!-- LOCKED until 25 Oct; JS reveals the forms on/after that date -->
+    <div id="voteLocked" class="locked">
+      <span class="monthflag">Opens soon</span>
+      <div class="big">October voting opens Sunday 25 October</div>
+      <p class="date">Come back on Sun 25 Oct to vote for your October Player of the Month.</p>
+    </div>
+
+    <div id="voteForms" class="votegrid" style="display:none">
       <form class="vote" id="supportersForm" data-kind="Supporters">
         <h3>Supporters' Player</h3>
         <p class="who">For parents and anyone watching the games.</p>
-
         <label for="s_name">Your name <span class="req">*</span></label>
         <input type="text" id="s_name" name="voterName" autocomplete="name" required>
-
         <label for="s_child">Your child in the team <span class="req">*</span></label>
         <select id="s_child" name="voterChild" required>
             <option value="" disabled selected>Choose your child…</option>
@@ -141,7 +198,6 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Troy">Troy</option>
         </select>
         <p class="hint">So we can make sure you're not voting for your own child.</p>
-
         <label for="s_vote">Your vote <span class="req">*</span></label>
         <select id="s_vote" name="votedFor" required>
             <option value="" disabled selected>Choose a player…</option>
@@ -160,19 +216,15 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Jesse">Jesse</option>
             <option value="Troy">Troy</option>
         </select>
-
         <label for="s_why">Why? <span class="req">*</span></label>
         <textarea id="s_why" name="reason" required placeholder="Tell us what stood out this month…"></textarea>
-
         <button type="submit" class="cast">Cast my vote</button>
         <div class="msg" id="s_msg" role="status" aria-live="polite"></div>
       </form>
 
-      <!-- PLAYERS' VOTE -->
       <form class="vote" id="playersForm" data-kind="Players">
         <h3>Players' Player</h3>
         <p class="who">For the players to vote for a teammate.</p>
-
         <label for="p_name">Your name <span class="req">*</span></label>
         <select id="p_name" name="voterName" required>
             <option value="" disabled selected>Which player are you?</option>
@@ -192,7 +244,6 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Troy">Troy</option>
         </select>
         <p class="hint">Pick your own name so you can't vote for yourself.</p>
-
         <label for="p_vote">Your vote <span class="req">*</span></label>
         <select id="p_vote" name="votedFor" required>
             <option value="" disabled selected>Choose a teammate…</option>
@@ -211,14 +262,11 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Jesse">Jesse</option>
             <option value="Troy">Troy</option>
         </select>
-
         <label for="p_why">Why? <span class="req">*</span></label>
         <textarea id="p_why" name="reason" required placeholder="What made them your player of the month?"></textarea>
-
         <button type="submit" class="cast">Cast my vote</button>
         <div class="msg" id="p_msg" role="status" aria-live="polite"></div>
       </form>
-
     </div>
   </div>
 </section>
@@ -226,87 +274,50 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
 
 <script>
 (function(){
-  // ==== PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BETWEEN THE QUOTES BELOW ====
   var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDSiY7jtvcyzzHI6mbc62LYTLi0-_dSQ2UjwDA-n3FlhSM90b4x0TF7OtaE5DyqZmK/exec";
-  var MONTH = "September";
+  var MONTH = "October";
+  // Voting opens at the start of Sun 25 October 2026 (local time).
+  var OPEN_DATE = new Date(2026, 9, 25, 0, 0, 0); // month is 0-indexed: 9 = October
 
-  function alreadyVoted(kind){
-    try { return localStorage.getItem("hawksVote_"+kind+"_"+MONTH) === "1"; }
-    catch(e){ return false; }
+  // Reveal forms only on/after the open date
+  if (new Date() >= OPEN_DATE) {
+    var locked = document.getElementById('voteLocked');
+    var forms  = document.getElementById('voteForms');
+    if (locked) locked.style.display = 'none';
+    if (forms)  forms.style.display = 'grid';
   }
-  function markVoted(kind){
-    try { localStorage.setItem("hawksVote_"+kind+"_"+MONTH,"1"); } catch(e){}
-  }
-  function show(el, cls, text){ el.className = "msg "+cls; el.textContent = text; }
 
-  function wire(formId, msgId, kind, childSel, nameSel, voteSel){
-    var form = document.getElementById(formId);
-    var msg  = document.getElementById(msgId);
-    if(!form) return;
+  function alreadyVoted(k){ try{return localStorage.getItem("hawksVote_"+k+"_"+MONTH)==="1";}catch(e){return false;} }
+  function markVoted(k){ try{localStorage.setItem("hawksVote_"+k+"_"+MONTH,"1");}catch(e){} }
+  function show(el,cls,t){ el.className="msg "+cls; el.textContent=t; }
 
-    if(alreadyVoted(kind)){
-      show(msg,"info","Thanks — it looks like you've already voted for "+MONTH+" on this device.");
-    }
-
-    form.addEventListener("submit", function(ev){
-      ev.preventDefault();
-      msg.className = "msg";
-
-      var votedFor = form.querySelector(voteSel).value;
-      var ownName  = nameSel ? form.querySelector(nameSel).value : "";
-      var child    = childSel ? form.querySelector(childSel).value : "";
-
-      // Rule: can't vote for own child (supporters) / yourself (players)
-      if(kind === "Supporters" && child && votedFor && child === votedFor){
-        show(msg,"err","You can't vote for your own child. Please pick another player.");
-        return;
-      }
-      if(kind === "Players" && ownName && votedFor && ownName === votedFor){
-        show(msg,"err","You can't vote for yourself. Please pick a teammate.");
-        return;
-      }
-      if(alreadyVoted(kind)){
-        show(msg,"info","You've already voted for "+MONTH+" on this device.");
-        return;
-      }
-
-      var btn = form.querySelector("button.cast");
-      btn.disabled = true; btn.textContent = "Sending…";
-
-      var data = new FormData(form);
-      data.append("voteType", kind);
-      data.append("month", MONTH);
-
-      if(SCRIPT_URL.indexOf("__SCRIPT")===0){
-        show(msg,"err","Voting isn't switched on yet — the form still needs its Google link added.");
-        btn.disabled=false; btn.textContent="Cast my vote";
-        return;
-      }
-
-      fetch(SCRIPT_URL, { method:"POST", body:data })
-        .then(function(){
-          markVoted(kind);
-          form.reset();
-          show(msg,"ok","Thanks for voting! Your "+kind+"' Player vote for "+MONTH+" has been recorded.");
-          btn.textContent="Vote recorded";
-        })
-        .catch(function(){
-          show(msg,"err","Something went wrong sending your vote. Please try again in a moment.");
-          btn.disabled=false; btn.textContent="Cast my vote";
-        });
+  function wire(formId,msgId,kind,childSel,nameSel,voteSel){
+    var form=document.getElementById(formId); if(!form) return;
+    var msg=document.getElementById(msgId);
+    if(alreadyVoted(kind)) show(msg,"info","Thanks — it looks like you've already voted for "+MONTH+" on this device.");
+    form.addEventListener("submit",function(ev){
+      ev.preventDefault(); msg.className="msg";
+      var votedFor=form.querySelector(voteSel).value;
+      var ownName=nameSel?form.querySelector(nameSel).value:"";
+      var child=childSel?form.querySelector(childSel).value:"";
+      if(kind==="Supporters"&&child&&votedFor&&child===votedFor){show(msg,"err","You can't vote for your own child. Please pick another player.");return;}
+      if(kind==="Players"&&ownName&&votedFor&&ownName===votedFor){show(msg,"err","You can't vote for yourself. Please pick a teammate.");return;}
+      if(alreadyVoted(kind)){show(msg,"info","You've already voted for "+MONTH+" on this device.");return;}
+      var btn=form.querySelector("button.cast"); btn.disabled=true; btn.textContent="Sending…";
+      var data=new FormData(form); data.append("voteType",kind); data.append("month",MONTH);
+      fetch(SCRIPT_URL,{method:"POST",body:data})
+        .then(function(){markVoted(kind);form.reset();show(msg,"ok","Thanks for voting! Your "+kind+"' Player vote for "+MONTH+" has been recorded.");btn.textContent="Vote recorded";})
+        .catch(function(){show(msg,"err","Something went wrong sending your vote. Please try again in a moment.");btn.disabled=false;btn.textContent="Cast my vote";});
     });
   }
-
   wire("supportersForm","s_msg","Supporters","#s_child",null,"#s_vote");
   wire("playersForm","p_msg","Players",null,"#p_name","#p_vote");
 })();
 </script>
 
-<footer>
-  <div class="wrap">
-    <div class="ft"><img src="assets/abbey-lane-badge.jpg" alt=""><span>Abbey Lane Saturday Team &middot; Hawks</span><img src="assets/hawks-badge.png" alt=""></div>
-    <div>Player of the Month voting</div>
-  </div>
-</footer>
+<footer><div class="wrap">
+  <div class="ft"><img src="assets/abbey-lane-badge.jpg" alt=""><span>Abbey Lane Saturday Team &middot; Hawks</span><img src="assets/hawks-badge.png" alt=""></div>
+  <div>Player of the Month</div>
+</div></footer>
 </body>
 </html>
