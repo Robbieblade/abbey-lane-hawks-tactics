@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Play Forward - Abbey Lane Hawks Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C; --panel:#16171A; --panel2:#101114; --line:#2C2E33;
+  --gold:#FFC400; --gold-dim:#8A6A00; --paper:#F2F2F0; --mute:#9A9CA3; --grass:#1C4B2A;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);
+  font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+em{font-style:italic}
+a{color:var(--gold)}
+
+/* HERO */
+header.hero{border-bottom:3px solid var(--gold);
+  background:repeating-linear-gradient(115deg,rgba(255,196,0,.05) 0 2px,transparent 2px 22px),
+    radial-gradient(120% 90% at 70% 0%,#23242A 0%,#0B0B0C 65%)}
+.hero-inner{display:flex;align-items:center;gap:26px;padding:30px 0 26px;flex-wrap:wrap}
+.crest{width:110px;height:110px;flex:0 0 auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+.crest img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+.hero-txt{flex:1 1 320px;min-width:240px}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-size:.82rem;margin:0 0 6px}
+h1{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.8rem,5.2vw,3rem);line-height:.95;margin:0 0 10px;letter-spacing:-.01em}
+h1 .l2{display:block;color:var(--gold)}
+.sub{color:var(--mute);max-width:58ch;margin:0}
+.club{width:56px;height:56px;flex:0 0 auto;opacity:.95}
+.club img{width:100%;height:100%;object-fit:contain;border-radius:50%}
+
+/* NAV — page tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:rgba(11,11,12,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs-inner{display:flex;gap:4px;overflow-x:auto;padding:0;scrollbar-width:none}
+.tabs-inner::-webkit-scrollbar{display:none}
+.tabs a{white-space:nowrap;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.09em;font-size:.92rem;color:var(--mute);
+  text-decoration:none;padding:14px 16px;border-bottom:3px solid transparent}
+.tabs a:hover,.tabs a:focus-visible{color:var(--paper);outline:none}
+.tabs a[aria-current="page"]{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SECTIONS */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.tag{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold);margin:0 0 6px}
+h2{font-family:'Archivo Black',sans-serif;text-transform:uppercase;
+  font-size:clamp(1.4rem,3.4vw,2.05rem);margin:0 0 6px;line-height:1.05}
+.sec-note{color:var(--mute);margin:0 0 24px;max-width:64ch}
+h3{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  font-size:1.18rem;margin:26px 0 10px}
+
+/* diagram + copy split */
+.split{display:grid;grid-template-columns:minmax(280px,420px) 1fr;gap:28px;align-items:start}
+@media(max-width:760px){.split{grid-template-columns:1fr}}
+.diagram{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.diagram img{display:block;width:100%;height:auto;background:var(--grass)}
+.diagram .cap{padding:11px 15px;border-top:1px solid var(--line);font-size:.86rem;color:var(--mute)}
+
+.obj{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:8px}
+.obj div{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--gold);
+  padding:14px 16px;border-radius:4px}
+.obj strong{display:block;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--gold);margin-bottom:2px}
+.obj span{font-size:.92rem;color:#D6D7DA}
+
+ol.steps{margin:0;padding-left:22px}
+ol.steps li{margin-bottom:8px}
+ol.steps li::marker{color:var(--gold);font-weight:700}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin-bottom:7px}
+ul.plain li::marker{color:var(--gold)}
+
+.prio{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+.prio div{display:flex;align-items:center;gap:12px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:6px;padding:10px 14px}
+.prio .num{font-family:'Archivo Black',sans-serif;color:var(--gold);width:22px;text-align:center;flex:0 0 auto}
+
+.key{border-left:4px solid var(--gold);background:var(--panel2);padding:12px 16px;
+  border-radius:0 6px 6px 0;margin-top:14px;font-size:.95rem}
+
+.scen{display:grid;gap:14px;margin-top:6px}
+.scen details{background:var(--panel);border:1px solid var(--line);border-radius:6px}
+.scen summary{cursor:pointer;list-style:none;padding:14px 18px;font-family:'Barlow Condensed',sans-serif;
+  text-transform:uppercase;letter-spacing:.07em;font-size:1.08rem;display:flex;align-items:center;gap:11px}
+.scen summary::-webkit-details-marker{display:none}
+.scen summary::before{content:"+";color:var(--gold);font-family:'Archivo Black',sans-serif;font-size:1.1rem}
+.scen details[open] summary::before{content:"\2212"}
+.scen summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.scen .body{padding:0 18px 18px;border-top:1px solid var(--line);padding-top:14px}
+.scen .body p:first-child{margin-top:0}
+
+/* home: role cards + shape */
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.role{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.role-hd{display:flex;align-items:center;gap:11px;padding:13px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.badge{width:40px;height:40px;flex:0 0 auto;border-radius:5px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.82rem}
+.badge.dark{background:#2C2E33;color:var(--gold)}
+.role-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.12rem;display:block;line-height:1.1}
+.role-hd small{color:var(--mute);font-size:.82rem}
+.role ul{margin:0;padding:14px 18px 16px 34px}
+.role li{margin-bottom:7px;font-size:.94rem}
+.role li::marker{color:var(--gold)}
+.role .oneline{margin:0;padding:11px 16px;background:var(--panel2);border-top:1px solid var(--line);
+  font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--gold);font-size:.95rem}
+
+/* position matrix (deep reference) */
+.pos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.pos{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.pos-hd{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel2);border-bottom:1px solid var(--line)}
+.pos-badge{width:44px;height:44px;flex:0 0 auto;border-radius:6px;background:var(--gold);color:#000;
+  display:grid;place-items:center;font-family:'Archivo Black',sans-serif;font-size:.9rem}
+.pos-badge.dark{background:#2C2E33;color:var(--gold)}
+.pos-hd b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.18rem;display:block;line-height:1.1}
+.pos-hd small{color:var(--mute);font-size:.82rem}
+.pos dl{margin:0;padding:6px 0}
+.pos dt{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.05em;
+  font-size:.82rem;color:var(--gold);padding:10px 16px 2px}
+.pos dd{margin:0;padding:0 16px 8px;font-size:.93rem;color:#DcDdE0}
+.pos dd + dt{border-top:1px solid var(--line);margin-top:4px}
+
+.trig{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.trig div{background:var(--gold);color:#000;padding:13px 15px;border-radius:4px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.05em;font-size:1rem;display:flex;align-items:center;gap:9px}
+.trig div::before{content:"\25B6";font-size:.7rem}
+.goshout{margin-top:18px;text-align:center;font-family:'Archivo Black',sans-serif;
+  font-size:clamp(1.3rem,4.5vw,2rem);text-transform:uppercase;color:var(--gold);
+  border:3px solid var(--gold);border-radius:6px;padding:16px;letter-spacing:.04em}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.rule{background:var(--panel);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:4px;padding:20px 18px}
+.rule .n{font-family:'Archivo Black',sans-serif;font-size:2.6rem;color:var(--gold-dim);line-height:1;margin-bottom:6px}
+.rule b{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:1.25rem;display:block;margin-bottom:6px}
+.rule p{margin:0;font-size:.94rem;color:#D6D7DA}
+
+/* home hub cards */
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+.hub a{display:block;text-decoration:none;color:var(--paper);background:var(--panel);
+  border:1px solid var(--line);border-radius:8px;padding:22px 20px;transition:border-color .15s,transform .15s}
+.hub a:hover,.hub a:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.hub .k{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--gold);font-size:1.3rem;margin-bottom:6px}
+.hub .d{color:var(--mute);font-size:.92rem}
+
+footer{padding:26px 0 44px;text-align:center;color:var(--mute);font-size:.85rem}
+footer .ft{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px}
+footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opacity:.85}
+
+@media print{
+  body{background:#fff;color:#000}
+  nav.tabs{display:none}
+  .scen details:not([open]) .body{display:block}
+  section{break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* PRINCIPLE CARDS (play-forward.html, goalkeeping.html) */
+.pcards{display:grid;gap:18px}
+.pcard{display:grid;grid-template-columns:minmax(200px,250px) 1fr;gap:24px;align-items:start;
+  background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px;scroll-margin-top:70px}
+@media(max-width:680px){.pcard{grid-template-columns:1fr}.pcard .clip{max-width:280px;margin:0 auto;width:100%}}
+.pcard video{display:block;width:100%;aspect-ratio:9/16;border-radius:6px;background:#000;object-fit:cover}
+.pcard .clip .cap{font-size:.8rem;color:var(--mute);margin-top:6px;text-align:center}
+.pcard .pn{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.8rem;color:var(--gold);margin:0 0 4px}
+.pcard h3{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:0;
+  font-size:clamp(1.25rem,3vw,1.7rem);line-height:1.05;margin:0 0 14px}
+.ny{display:grid;gap:8px;margin:0 0 14px}
+.ny div{display:flex;gap:12px;align-items:baseline;background:var(--panel2);border:1px solid var(--line);
+  border-radius:6px;padding:11px 14px}
+.ny .lab{flex:0 0 46px;text-align:center;font-family:'Archivo Black',sans-serif;font-size:.74rem;
+  padding:3px 0;border-radius:4px}
+.ny .no{color:#B9BBC2}
+.ny .no .lab{background:#2C2E33;color:#C9CAD0}
+.ny .yes{color:var(--paper);font-weight:600}
+.ny .yes .lab{background:var(--gold);color:#000}
+.rulebar{background:var(--gold);color:#000;font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:1.2rem;padding:11px 15px;border-radius:4px;margin:0 0 12px}
+.pcard p.why{margin:0 0 10px;font-size:.95rem;color:#D6D7DA}
+.pcard p.who{margin:0;font-size:.9rem;color:var(--mute)}
+.pcard p.who b{color:var(--paper)}
+.pcard.gk .rulebar,.pcard.gk .ny .yes .lab{background:#5FD38D}
+.pcard.gk .pn{color:#5FD38D}
+
+/* jump list */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px}
+.jump a{font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  font-size:.92rem;text-decoration:none;color:var(--paper);background:var(--panel);border:1px solid var(--line);
+  border-radius:999px;padding:6px 13px}
+.jump a span{color:var(--gold);margin-right:6px}
+.jump a:hover,.jump a:focus-visible{border-color:var(--gold);outline:none}
+
+/* session log */
+.log{width:100%;border-collapse:collapse;font-size:.94rem}
+.log th,.log td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.log th{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700}
+.log td:first-child{white-space:nowrap;color:var(--mute)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="crest"><a href="index.html"><img src="assets/hawks-badge.png" alt="Abbey Lane Saturday Team Hawks badge"></a></div>
+    <div class="hero-txt">
+      <p class="eyebrow">Attacking principles</p>
+      <h1>Play Forward<span class="l2">Win it high, move, create</span></h1>
+      <p class="sub">The ten rules that turn our best defence in the league into more chances. Watch the clip, learn the rule, take it onto the pitch.</p>
+    </div>
+    <div class="club"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt="Abbey Lane JFC badge"></a></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Pages"><div class="wrap tabs-inner"><a href="index.html">Roles</a><a href="play-forward.html" aria-current="page">Play Forward</a><a href="goalkeeping.html">Goalkeeping</a><a href="set-piece-roles.html">Set Pieces</a><a href="goal-kicks.html">Goal Kicks</a><a href="corners.html">Corners</a><a href="throw-ins.html">Throw-Ins</a><a href="quiz.html">Quiz</a><a href="parents.html">Parents</a><a href="vote.html">Vote</a><a href="table.html">Table</a></div></nav>
+
+<section id="rules10">
+  <div class="wrap">
+    <p class="tag">If you remember nothing else</p>
+    <h2>The ten rules</h2>
+    <p class="sec-note">Each one has a clip below. Tap a rule to jump to it. Coaches will shout the short version in training and on match day.</p>
+    <div class="jump">
+      <a href="#press"><span>1</span>Curve your press</a>
+      <a href="#receive"><span>2</span>Scan first, open your body</a>
+      <a href="#passmove"><span>3</span>Pass, then move</a>
+      <a href="#space"><span>4</span>Space, not feet</a>
+      <a href="#blindside"><span>5</span>Hide, then go</a>
+      <a href="#timing"><span>6</span>Start deep, arrive late</a>
+      <a href="#overlap"><span>7</span>He cuts in, go outside</a>
+      <a href="#switch"><span>8</span>Busy one side? Play the other</a>
+      <a href="#strike"><span>9</span>Chest over the ball</a>
+      <a href="#keeper"><span>10</span>Close the angle</a>
+    </div>
+  </div>
+</section>
+
+<section id="win-it-high">
+  <div class="wrap">
+    <p class="tag">Part 1</p>
+    <h2>Win it high</h2>
+    <p class="sec-note">Our attacks start without the ball. Win it in their half and we’re already close to goal. Then receive it so you can play forward straight away.</p>
+    <div class="pcards">
+
+      <article class="pcard" id="press">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/press.jpg" aria-label="Clip: the striker curves his press to cut off the pass to the midfielder"><source src="assets/clips/press.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 1</p>
+          <h3>Curve your press</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Run straight at him. He passes round you.</div><div class="yes"><span class="lab">YES</span>Curve your run. Block the pass to his mate.</div></div>
+          <p class="rulebar">Curve your press</p>
+          <p class="why">Run straight and he just passes to the player beside him. Curve it so your body sits between him and that pass. Now he has to go long or give it away.</p>
+          <p class="who"><b>Who:</b> CF starts it. The nearest midfielders squeeze up behind so the long ball is ours too. <a href="index.html#rules">Hunt in pairs.</a></p>
+        </div>
+      </article>
+
+      <article class="pcard" id="receive">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/receive.jpg" aria-label="Clip: a midfielder receiving square, then checking his shoulder and opening his body"><source src="assets/clips/receive.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 2</p>
+          <h3>Open your body</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Square on, back to goal. You get caught.</div><div class="yes"><span class="lab">YES</span>Check your shoulder. Open up. Face forward.</div></div>
+          <p class="rulebar">Scan first, open your body</p>
+          <p class="why">Look over your shoulder before the ball arrives, so you know where the defender is. Open your body and take it on your back foot. One touch and you’re facing the whole pitch.</p>
+          <p class="who"><b>Who:</b> all five midfielders, and CBs receiving from Josh.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="movement">
+  <div class="wrap">
+    <p class="tag">Part 2</p>
+    <h2>Movement</h2>
+    <p class="sec-note">The player on the ball can only play forward if someone has moved. Six ways to make the next pass possible.</p>
+    <div class="pcards">
+
+      <article class="pcard" id="passmove">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/passmove.jpg" aria-label="Clip: a player passes and stands still, then passes and runs past the defender"><source src="assets/clips/passmove.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 3</p>
+          <h3>Pass, then move</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Pass and stand still. Your teammate is stuck.</div><div class="yes"><span class="lab">YES</span>Pass and run. Two options, one defender.</div></div>
+          <p class="rulebar">Pass, then move</p>
+          <p class="why">Stand and watch and the defender steps in front of your teammate. Move straight away and the defender has to choose between you. He can’t cover both.</p>
+          <p class="who"><b>Who:</b> everyone, especially the midfield five making triangles.</p>
+        </div>
+      </article>
+
+      <article class="pcard" id="space">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/space.jpg" aria-label="Clip: a pass to feet gets cut out, then the same run with the pass played into space"><source src="assets/clips/space.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 4</p>
+          <h3>Pass to space, not feet</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Ball to his feet. The defender steps in.</div><div class="yes"><span class="lab">YES</span>Ball into space. He runs onto it.</div></div>
+          <p class="rulebar">Space, not feet</p>
+          <p class="why">When a teammate is running, play it into the space in front of him. Ball and runner arrive together, and the defender has to turn and chase.</p>
+          <p class="who"><b>Who:</b> CBs and central mids. See the run first, then pick the space.</p>
+        </div>
+      </article>
+
+      <article class="pcard" id="blindside">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/blindside.jpg" aria-label="Clip: the defender's view, with the striker in front of him then hidden behind his shoulder"><source src="assets/clips/blindside.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 5</p>
+          <h3>Get on the blind side</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Stand where he can see you.</div><div class="yes"><span class="lab">YES</span>Hide behind his shoulder. He looks away, go.</div></div>
+          <p class="rulebar">Hide, then go</p>
+          <p class="why">You’re not too slow to score, you’re too easy to see. Start behind the defender’s shoulder. The moment he turns his head to watch the ball, go. Thomas Müller called himself a “space interpreter” and set a Bundesliga assist record doing this.</p>
+          <p class="who"><b>Who:</b> CF, and any midfielder arriving late in the box.</p>
+        </div>
+      </article>
+
+      <article class="pcard" id="timing">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/timing.jpg" aria-label="Clip: a striker starts level and is offside, then starts deeper and arrives at full speed"><source src="assets/clips/timing.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 6</p>
+          <h3>Start deep, arrive late</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Start level with him. Offside.</div><div class="yes"><span class="lab">YES</span>Start deep. Go when the passer looks up.</div></div>
+          <p class="rulebar">Start deep, arrive late</p>
+          <p class="why">Hang back, then go when the passer lifts his head. You hit the line at full speed while the defender is still turning, and you’re onside.</p>
+          <p class="who"><b>Who:</b> CF and wide mids. Watch the passer’s head, not the ball.</p>
+        </div>
+      </article>
+
+      <article class="pcard" id="overlap">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/overlap.jpg" aria-label="Clip: a teammate stays behind the winger, then overlaps on the outside"><source src="assets/clips/overlap.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 7</p>
+          <h3>Overlap on the outside</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Stay behind the winger. He’s stuck.</div><div class="yes"><span class="lab">YES</span>Sprint round the outside. He can’t stop both.</div></div>
+          <p class="rulebar">He cuts in, you go outside</p>
+          <p class="why">The clip shows a full-back. We play 2-5-1, so the run comes from the nearest central mid. A CB only goes if the other CB and a midfielder are covering. Wide mid: when he overlaps, cut inside and play him in or use the space.</p>
+          <p class="who"><b>Who:</b> advanced CMs and wide mids working together.</p>
+        </div>
+      </article>
+
+      <article class="pcard" id="switch">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/switch.jpg" aria-label="Clip: under pressure on one side, the midfielder switches it long to the far side"><source src="assets/clips/switch.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 8</p>
+          <h3>Switch the play</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Play into the crowd. You get squeezed.</div><div class="yes"><span class="lab">YES</span>Switch it. Our wide mid gets space.</div></div>
+          <p class="rulebar">Busy one side? Play the other</p>
+          <p class="why">When one side is packed, their whole defence has slid across. Switch it long and our far-side wide mid has space to run into. You only see it if you’ve scanned (Rule 2).</p>
+          <p class="who"><b>Who:</b> far-side wide mid stays wide and ready. Centre mids scan both sides.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="finish">
+  <div class="wrap">
+    <p class="tag">Part 3</p>
+    <h2>Finish it</h2>
+    <p class="sec-note">All that work needs a clean strike at the end. And the same idea from the other side: how Josh makes the goal smaller.</p>
+    <div class="pcards">
+
+      <article class="pcard" id="strike">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/strike.jpg" aria-label="Clip: leaning back sends it over the bar, then planting beside the ball with the chest over it"><source src="assets/clips/strike.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 9</p>
+          <h3>Get over the ball</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Lean back. It flies over the bar.</div><div class="yes"><span class="lab">YES</span>Plant beside it. Chest over the ball.</div></div>
+          <p class="rulebar">Chest over the ball</p>
+          <p class="why">Three steps: plant your foot beside the ball, not behind it. Knee and chest over the ball. Laces through the middle and land on your kicking foot. Frank Lampard scored 177 Premier League goals from midfield like this.</p>
+          <p class="who"><b>Who:</b> everyone.</p>
+        </div>
+      </article>
+
+      <article class="pcard gk" id="keeper">
+        <div class="clip"><video controls playsinline preload="none" poster="assets/clips/keeper.jpg" aria-label="Clip: a keeper on his line leaves half the goal open, then steps out and covers almost all of it"><source src="assets/clips/keeper.mp4" type="video/mp4"></video></div>
+        <div>
+          <p class="pn">Rule 10 · Goalkeeper</p>
+          <h3>Close the angle</h3>
+          <div class="ny"><div class="no"><span class="lab">NO</span>Stay on your line. Half the goal is open.</div><div class="yes"><span class="lab">YES</span>Step out about 5 metres. The goal looks tiny.</div></div>
+          <p class="rulebar">Close the distance, close the angle</p>
+          <p class="why">Your reach doesn’t change, but stepping out makes it cover far more of the goal from the striker’s view. Outfielders, flip it: if their keeper rushes out, shoot early or go round.</p>
+          <p class="who"><b>Who:</b> Josh. More on the <a href="goalkeeping.html">Goalkeeping page</a>.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="jobs">
+  <div class="wrap">
+    <p class="tag">Put it together</p>
+    <h2>Your jobs in our 2-5-1</h2>
+    <div class="split">
+      <div class="diagram"><img src="assets/play-forward-jobs.svg" alt="Our 2-5-1 with the play forward jobs: CF curves the press, a central mid overlaps, the ball is switched to the far wide mid, and the keeper steps out."><div class="cap">CF curves the press, a central mid overlaps, the ball goes to the far side, Josh steps out.</div></div>
+      <div class="roles">
+        <div class="role"><div class="role-hd"><span class="badge">CF</span><span><b>Striker</b><small>Rules 1, 5, 6</small></span></div><ul><li>Curve the press to win it high.</li><li>Get on the blind side.</li><li>Start deep, arrive late.</li></ul></div>
+        <div class="role"><div class="role-hd"><span class="badge">MID</span><span><b>Midfield five</b><small>Rules 2, 3, 7, 8</small></span></div><ul><li>Scan and open your body.</li><li>Pass, then move.</li><li>Overlap and switch it.</li></ul></div>
+        <div class="role"><div class="role-hd"><span class="badge dark">CB</span><span><b>Centre backs</b><small>Rules 2, 4</small></span></div><ul><li>Push up behind the press.</li><li>Pass to space, not feet.</li></ul></div>
+        <div class="role"><div class="role-hd"><span class="badge dark">GK</span><span><b>Josh</b><small>Rule 10</small></span></div><ul><li>Close the angle.</li><li>Then get us going forward quickly.</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="test">
+  <div class="wrap">
+    <p class="tag">Test yourself</p>
+    <h2>What do you do?</h2>
+    <p class="sec-note">Answer in your head first, then tap to check.</p>
+    <div class="scen">
+      <details><summary>Their centre-back has the ball. How do you press him?</summary><div class="body"><p>Curve your run so your body blocks the pass to his teammate. He has to go long or give it away. (Rule 1)</p></div></details>
+      <details><summary>The ball’s coming to you in midfield. What do you do before it arrives?</summary><div class="body"><p>Check your shoulder and open your body, so your first touch takes you forward. (Rule 2)</p></div></details>
+      <details><summary>You’ve just passed. What now?</summary><div class="body"><p>Move straight away. Give your teammate two options. (Rule 3)</p></div></details>
+      <details><summary>Our side is packed with their players. Where does the ball go?</summary><div class="body"><p>Switch it to the other side, where our wide mid is waiting. (Rule 8)</p></div></details>
+      <details><summary>When does the striker start his run?</summary><div class="body"><p>From deep, the moment the passer looks up. (Rule 6)</p></div></details>
+      <details><summary>Josh, it’s one-on-one. Stay on your line or step out?</summary><div class="body"><p>Step out to close the distance and the angle. (Rule 10)</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section id="sessions">
+  <div class="wrap">
+    <p class="tag">Session log</p>
+    <h2>When we covered it</h2>
+    <table class="log">
+      <thead><tr><th>Date</th><th>Session</th><th>Rules</th></tr></thead>
+      <tbody>
+        <!-- NEW SESSION: add a row here, newest at the top -->
+        <tr><td>20 Oct 2026</td><td>Play Forward 1 — attacking movement and playing forward</td><td>1–10</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft"><a href="index.html"><img src="assets/abbey-lane-badge.jpg" alt=""></a><span>Abbey Lane Saturday Team &middot; Hawks</span><a href="index.html"><img src="assets/hawks-badge.png" alt=""></a></div>
+  </div>
+</footer>
+<script>
+// Only one clip plays at a time
+document.querySelectorAll('video').forEach(v=>v.addEventListener('play',()=>{
+  document.querySelectorAll('video').forEach(o=>{if(o!==v)o.pause()});
+}));
+</script>
+</body>
+</html>

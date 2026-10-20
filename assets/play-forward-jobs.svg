@@ -1,0 +1,35 @@
+<svg viewBox="0 0 460 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Play forward jobs in our 2-5-1: the striker curves his press, a central midfielder overlaps the wide midfielder, the ball is switched to the far wide midfielder, and the goalkeeper steps off his line">
+<defs>
+<marker id="ag" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFC400"/></marker>
+<marker id="aw" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#F2F2F0"/></marker>
+<marker id="ak" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5FD38D"/></marker>
+</defs>
+<rect width="460" height="640" fill="#1C4B2A"/>
+<rect y="0" width="460" height="56" fill="#1F5430"/><rect y="112" width="460" height="56" fill="#1F5430"/><rect y="224" width="460" height="56" fill="#1F5430"/><rect y="336" width="460" height="56" fill="#1F5430"/><rect y="448" width="460" height="56" fill="#1F5430"/><rect y="560" width="460" height="56" fill="#1F5430"/>
+<g fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2.5">
+<rect x="16" y="16" width="428" height="608"/><path d="M16 320H444"/><circle cx="230" cy="320" r="54"/>
+<rect x="110" y="16" width="240" height="96"/><rect x="110" y="528" width="240" height="96"/>
+<path d="M195 16V6H265V16M195 624V634H265V624"/>
+</g>
+<!-- striker's curved press -->
+<path d="M230 160Q178 118 214 62" fill="none" stroke="#FFC400" stroke-width="5" marker-end="url(#ag)"/>
+<!-- central mid overlaps the left wide mid -->
+<path d="M130 360Q30 290 52 200" fill="none" stroke="#FFC400" stroke-width="5" marker-end="url(#ag)"/>
+<!-- switch to the far wide mid -->
+<path d="M230 312L392 304" fill="none" stroke="#F2F2F0" stroke-width="4" stroke-dasharray="12 9" marker-end="url(#aw)"/>
+<!-- keeper steps out -->
+<path d="M230 590V552" fill="none" stroke="#5FD38D" stroke-width="5" marker-end="url(#ak)"/>
+<g stroke="#0B0B0C" stroke-width="3">
+<circle cx="230" cy="160" r="17" fill="#F2F2F0"/>
+<circle cx="58" cy="318" r="17" fill="#FFC400"/><circle cx="402" cy="296" r="17" fill="#FFC400"/>
+<circle cx="130" cy="372" r="17" fill="#FFC400"/><circle cx="230" cy="328" r="17" fill="#FFC400"/><circle cx="330" cy="372" r="17" fill="#FFC400"/>
+<circle cx="152" cy="492" r="17" fill="#8EC9F2"/><circle cx="308" cy="492" r="17" fill="#8EC9F2"/>
+<circle cx="230" cy="600" r="17" fill="#5FD38D"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="17">
+<text x="256" y="166" fill="#F2F2F0">CF · curve the press</text>
+<text x="230" y="414" fill="#FFC400" text-anchor="middle">Midfield five · scan, overlap, switch</text>
+<text x="230" y="498" fill="#8EC9F2" text-anchor="middle">CBs</text>
+<text x="256" y="606" fill="#5FD38D">GK · close the angle</text>
+</g>
+</svg>
