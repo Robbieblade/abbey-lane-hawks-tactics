@@ -165,15 +165,9 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
     <span class="monthflag">Voting for October</span>
     <h2>Cast your October vote</h2>
     <p class="sec-note">Two forms below. Supporters (parents and anyone watching) use the first, players use the second. One vote each, please — and you can't vote for your own child, or for yourself.</p>
+    <p class="sec-note"><strong>Note:</strong> last month's winners — Osca, Zak and Logan — aren't options this month, to give someone else the spotlight. They can still vote.</p>
 
-    <!-- LOCKED until 25 Oct; JS reveals the forms on/after that date -->
-    <div id="voteLocked" class="locked">
-      <span class="monthflag">Opens soon</span>
-      <div class="big">October voting opens Sunday 25 October</div>
-      <p class="date">Come back on Sun 25 Oct to vote for your October Player of the Month.</p>
-    </div>
-
-    <div id="voteForms" class="votegrid" style="display:none">
+    <div id="voteForms" class="votegrid">
       <form class="vote" id="supportersForm" data-kind="Supporters">
         <h3>Supporters' Player</h3>
         <p class="who">For parents and anyone watching the games.</p>
@@ -204,13 +198,10 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Josh">Josh</option>
             <option value="Harry">Harry</option>
             <option value="Max">Max</option>
-            <option value="Osca">Osca</option>
             <option value="Tom">Tom</option>
             <option value="Chaz">Chaz</option>
             <option value="Zaev">Zaev</option>
             <option value="Oliver">Oliver</option>
-            <option value="Zak">Zak</option>
-            <option value="Logan">Logan</option>
             <option value="Bazza">Bazza</option>
             <option value="Barnsey">Barnsey</option>
             <option value="Jesse">Jesse</option>
@@ -250,13 +241,10 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
             <option value="Josh">Josh</option>
             <option value="Harry">Harry</option>
             <option value="Max">Max</option>
-            <option value="Osca">Osca</option>
             <option value="Tom">Tom</option>
             <option value="Chaz">Chaz</option>
             <option value="Zaev">Zaev</option>
             <option value="Oliver">Oliver</option>
-            <option value="Zak">Zak</option>
-            <option value="Logan">Logan</option>
             <option value="Bazza">Bazza</option>
             <option value="Barnsey">Barnsey</option>
             <option value="Jesse">Jesse</option>
@@ -276,16 +264,6 @@ footer .ft img{width:34px;height:34px;object-fit:contain;border-radius:50%;opaci
 (function(){
   var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzDSiY7jtvcyzzHI6mbc62LYTLi0-_dSQ2UjwDA-n3FlhSM90b4x0TF7OtaE5DyqZmK/exec";
   var MONTH = "October";
-  // Voting opens at the start of Sun 25 October 2026 (local time).
-  var OPEN_DATE = new Date(2026, 9, 25, 0, 0, 0); // month is 0-indexed: 9 = October
-
-  // Reveal forms only on/after the open date
-  if (new Date() >= OPEN_DATE) {
-    var locked = document.getElementById('voteLocked');
-    var forms  = document.getElementById('voteForms');
-    if (locked) locked.style.display = 'none';
-    if (forms)  forms.style.display = 'grid';
-  }
 
   function alreadyVoted(k){ try{return localStorage.getItem("hawksVote_"+k+"_"+MONTH)==="1";}catch(e){return false;} }
   function markVoted(k){ try{localStorage.setItem("hawksVote_"+k+"_"+MONTH,"1");}catch(e){} }
